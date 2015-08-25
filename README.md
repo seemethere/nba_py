@@ -25,4 +25,4 @@ A python facing API for stats.nba.com (Still in heavy development)
 
 ### Team
   * stats.nba.com/teaminfocommon/
-  * ~stats.nba.com/teamdashboardbygeneralsplits/~
+  * ~~stats.nba.com/teamdashboardbygeneralsplits/~~
