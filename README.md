@@ -2,6 +2,7 @@
 
 ##Summary
 A python facing API for stats.nba.com (Still in heavy development)
+Originally based off of, [https://github.com/bradleyfay/NBAStats](https://github.com/bradleyfay/NBAStats)
 
 ###Version = 0.1a1
 
