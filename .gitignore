@@ -1,5 +1,6 @@
 # User values
 data_dumps/
+official_nba_stats_files/
 
 # Byte-compiled / optimized / DLL files
 __pycache__/
