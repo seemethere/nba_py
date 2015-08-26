@@ -1,12 +1,12 @@
 from requests import get
 from pandas import DataFrame
 from datetime import datetime
+from nba_py.constants import League
 
 # Constants
 TODAY = datetime.today()
 CURRENT_SEASON = '2015-16'
 BASE_URL = 'http://stats.nba.com/stats/{endpoint}/'
-NBA_ID = '00'
 
 
 def _api_scrape(json_inp, ndx):
@@ -39,12 +39,13 @@ def _get_json(endpoint, params):
         json (json): json object for selected API call
     """
     _get = get(BASE_URL.format(endpoint=endpoint), params=params)
-    print _get.url
+    # print _get.url
     _get.raise_for_status()
     return _get.json()
 
 
 class Scoreboard:
+    _endpoint = 'scoreboard'
     """
     Displays current games plus info for a given day
     """
@@ -53,12 +54,12 @@ class Scoreboard:
                  month=TODAY.month,
                  day=TODAY.day,
                  year=TODAY.year,
-                 league_id=NBA_ID,
+                 league_id=League.NBA,
                  offset=0):
         self._game_date = '{month:02d}/{day:02d}/{year}'.format(month=month,
                                                                 day=day,
                                                                 year=year)
-        self.json = _get_json(endpoint='scoreboard',
+        self.json = _get_json(endpoint=self._endpoint,
                               params={'LeagueID': league_id,
                                       'GameDate': self._game_date,
                                       'DayOffset': offset})

@@ -1,13 +1,15 @@
-from nba_py import _api_scrape, _get_json, CURRENT_SEASON, NBA_ID
+from nba_py import _api_scrape, _get_json, CURRENT_SEASON
+from nba_py.constants import PerMode, League, SeasonType, MeasureType
 
 
 class CommonAllPlayers:
+    _endpoint = 'commonallplayers'
 
     def __init__(self,
-                 league_id=NBA_ID,
+                 league_id=League.NBA,
                  season=CURRENT_SEASON,
                  only_current=1):
-        self.json = _get_json(endpoint='commonallplayers',
+        self.json = _get_json(endpoint=self._endpoint,
                               params={'LeagueID': league_id,
                                       'Season': season,
                                       'IsOnlyCurrentSeason': only_current})
@@ -17,10 +19,11 @@ class CommonAllPlayers:
 
 
 class PlayerInfoCommon:
+    _endpoint = 'commonplayerinfo'
 
     def __init__(self,
                  player_id):
-        self.json = _get_json(endpoint='commonplayerinfo',
+        self.json = _get_json(endpoint=self._endpoint,
                               params={'PlayerID': player_id})
 
     def info(self):
@@ -31,17 +34,18 @@ class PlayerInfoCommon:
 
 
 class PlayerDashboard:
+    _endpoint = 'playerdashboardbygeneralsplits'
 
     def __init__(self,
                  player_id,
-                 measure_type='Base',
-                 per_mode='PerGame',
+                 measure_type=MeasureType.Base,
+                 per_mode=PerMode.PerGame,
                  plus_minus='N',
                  pace_adjust='N',
                  rank='N',
-                 league_id=NBA_ID,
+                 league_id=League.NBA,
                  season=CURRENT_SEASON,
-                 season_type='Regular Season',
+                 season_type=SeasonType.Regular,
                  po_round='',
                  outcome='',
                  location='',
@@ -56,7 +60,7 @@ class PlayerDashboard:
                  period=0,
                  shot_clock_range='',
                  last_n_games=0):
-        self.json = _get_json(endpoint='playerdashboardbygeneralsplits',
+        self.json = _get_json(endpoint=self._endpoint,
                               params={'PlayerID': player_id,
                                       'MeasureType': measure_type,
                                       'PerMode': per_mode,
@@ -101,12 +105,13 @@ class PlayerDashboard:
 
 
 class PlayerCareerStats:
+    _endpoint = 'playercareerstats'
 
     def __init__(self,
                  player_id,
-                 per_mode='PerGame',
-                 league_id=NBA_ID):
-        self.json = _get_json(endpoint='playerprofilev2',
+                 per_mode=PerMode.PerGame,
+                 league_id=League.NBA):
+        self.json = _get_json(endpoint=self._endpoint,
                               params={'PlayerID': player_id,
                                       'LeagueID': league_id,
                                       'PerMode': per_mode})
@@ -143,6 +148,7 @@ class PlayerCareerStats:
 
 
 class PlayerProfile(PlayerCareerStats):
+    _endpoint = 'playerprofilev2'
 
     def season_highs(self):
         return _api_scrape(self.json, 10)
@@ -155,13 +161,14 @@ class PlayerProfile(PlayerCareerStats):
 
 
 class PlayerGameLog:
+    _endpoint = 'playergamelog'
 
     def __init__(self,
                  player_id,
-                 league_id=NBA_ID,
+                 league_id=League.NBA,
                  season=CURRENT_SEASON,
-                 season_type='Regular Season'):
-        self.json = _get_json(endpoint='playergamelog',
+                 season_type=SeasonType.Regular):
+        self.json = _get_json(endpoint=self._endpoint,
                               params={'PlayerID': player_id,
                                       'LeagueID': league_id,
                                       'Season': season,

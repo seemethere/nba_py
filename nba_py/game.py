@@ -2,6 +2,7 @@ from nba_py import _api_scrape, _get_json
 
 
 class Boxscore:
+    _endpoint = 'boxscore'
 
     def __init__(self,
                  game_id,
@@ -10,7 +11,7 @@ class Boxscore:
                  end_period=0,
                  start_range=0,
                  end_range=0):
-        self.json = _get_json(endpoint='boxscore',
+        self.json = _get_json(endpoint=self._endpoint,
                               params={'GameID': game_id,
                                       'RangeType': range_type,
                                       'StartPeriod': start_period,
@@ -59,6 +60,7 @@ class Boxscore:
 
 
 class BoxscoreScoring(Boxscore):
+    _endpoint = 'boxscorescoring'
 
     def sql_players_scoring(self):
         return _api_scrape(self.json, 13)
@@ -68,6 +70,7 @@ class BoxscoreScoring(Boxscore):
 
 
 class BoxscoreUsage(Boxscore):
+    _endpoint = 'boxscoreusage'
 
     def sql_players_usage(self):
         return _api_scrape(self.json, 13)
@@ -77,6 +80,7 @@ class BoxscoreUsage(Boxscore):
 
 
 class BoxscoreMisc(Boxscore):
+    _endpoint = 'boxscoremisc'
 
     def sql_players_misc(self):
         return _api_scrape(self.json, 13)
@@ -86,6 +90,7 @@ class BoxscoreMisc(Boxscore):
 
 
 class BoxscoreAdvanced(Boxscore):
+    _endpoint = 'boxscoreadvanced'
 
     def sql_players_advanced(self):
         return _api_scrape(self.json, 13)
@@ -95,6 +100,7 @@ class BoxscoreAdvanced(Boxscore):
 
 
 class BoxscoreFourFactors(Boxscore):
+    _endpoint = 'boxscorefourfactors'
 
     def sql_players_four_factors(self):
         return _api_scrape(self.json, 13)
@@ -104,12 +110,13 @@ class BoxscoreFourFactors(Boxscore):
 
 
 class PlayByPlay:
+    _endpoint = 'playbyplay'
 
     def __init__(self,
                  game_id,
                  start_period=0,
                  end_period=0):
-        self.json = _get_json(endpoint='playbyplay',
+        self.json = _get_json(endpoint=self._endpoint,
                               params={'GameID': game_id,
                                       'StartPeriod': start_period,
                                       'EndPeriod': end_period})
