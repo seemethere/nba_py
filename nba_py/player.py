@@ -98,3 +98,74 @@ class PlayerDashboard:
 
     def days_rest_dashboard(self):
         return _api_scrape(self.json, 5)
+
+
+class PlayerCareerStats:
+
+    def __init__(self,
+                 player_id,
+                 per_mode='PerGame',
+                 league_id=NBA_ID):
+        self.json = _get_json(endpoint='playerprofilev2',
+                              params={'PlayerID': player_id,
+                                      'LeagueID': league_id,
+                                      'PerMode': per_mode})
+
+    def regular_season_totals(self):
+        return _api_scrape(self.json, 0)
+
+    def regular_season_career_totals(self):
+        return _api_scrape(self.json, 1)
+
+    def post_season_totals(self):
+        return _api_scrape(self.json, 2)
+
+    def post_season_career_totals(self):
+        return _api_scrape(self.json, 3)
+
+    def all_star_season_totals(self):
+        return _api_scrape(self.json, 4)
+
+    def career_all_star_season_totals(self):
+        return _api_scrape(self.json, 5)
+
+    def college_season_totals(self):
+        return _api_scrape(self.json, 6)
+
+    def career_college_season_totals(self):
+        return _api_scrape(self.json, 7)
+
+    def regular_season_rankings(self):
+        return _api_scrape(self.json, 8)
+
+    def post_season_rankings(self):
+        return _api_scrape(self.json, 9)
+
+
+class PlayerProfile(PlayerCareerStats):
+
+    def season_highs(self):
+        return _api_scrape(self.json, 10)
+
+    def career_highs(self):
+        return _api_scrape(self.json, 11)
+
+    def next_game(self):
+        return _api_scrape(self.json, 12)
+
+
+class PlayerGameLog:
+
+    def __init__(self,
+                 player_id,
+                 league_id=NBA_ID,
+                 season=CURRENT_SEASON,
+                 season_type='Regular Season'):
+        self.json = _get_json(endpoint='playergamelog',
+                              params={'PlayerID': player_id,
+                                      'LeagueID': league_id,
+                                      'Season': season,
+                                      'SeasonType': season_type})
+
+    def info(self):
+        return _api_scrape(self.json, 0)
