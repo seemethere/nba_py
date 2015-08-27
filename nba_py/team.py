@@ -1,4 +1,5 @@
-from nba_py import _api_scrape, _get_json, CURRENT_SEASON, NBA_ID
+from nba_py import _api_scrape, _get_json, CURRENT_SEASON
+from nba_py.constants import League
 
 
 class TeamInfoCommon:
@@ -7,7 +8,7 @@ class TeamInfoCommon:
     def __init__(self,
                  team_id,
                  season=CURRENT_SEASON,
-                 league_id=NBA_ID,
+                 league_id=League.NBA,
                  season_type='Regular Season'):
         self.json = _get_json(endpoint=self._endpoint,
                               params={'TeamID': team_id,
