@@ -2,7 +2,7 @@ from nba_py import _api_scrape, _get_json, CURRENT_SEASON
 from nba_py.constants import PerMode, League, SeasonType, MeasureType
 
 
-class CommonAllPlayers:
+class PlayerList:
     _endpoint = 'commonallplayers'
 
     def __init__(self,
@@ -18,7 +18,7 @@ class CommonAllPlayers:
         return _api_scrape(self.json, 0)
 
 
-class PlayerInfoCommon:
+class PlayerSummary:
     _endpoint = 'commonplayerinfo'
 
     def __init__(self,
@@ -33,7 +33,7 @@ class PlayerInfoCommon:
         return _api_scrape(self.json, 1)
 
 
-class PlayerDashboard:
+class PlayerGeneralSplits:
     _endpoint = 'playerdashboardbygeneralsplits'
 
     def __init__(self,
@@ -104,7 +104,7 @@ class PlayerDashboard:
         return _api_scrape(self.json, 5)
 
 
-class PlayerCareerStats:
+class PlayerCareer:
     _endpoint = 'playercareerstats'
 
     def __init__(self,
@@ -147,7 +147,7 @@ class PlayerCareerStats:
         return _api_scrape(self.json, 9)
 
 
-class PlayerProfile(PlayerCareerStats):
+class PlayerProfile(PlayerCareer):
     _endpoint = 'playerprofilev2'
 
     def season_highs(self):
@@ -160,7 +160,7 @@ class PlayerProfile(PlayerCareerStats):
         return _api_scrape(self.json, 12)
 
 
-class PlayerGameLog:
+class PlayerGameLogs:
     _endpoint = 'playergamelog'
 
     def __init__(self,
