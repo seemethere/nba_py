@@ -1,4 +1,4 @@
-# *nba_py - [stats.nba.com](stats.nba.com) API for python*
+# *nba_py - [stats.nba.com](http://stats.nba.com) API for python*
 
 ## Summary
 A python facing API for stats.nba.com (Still in heavy development)
