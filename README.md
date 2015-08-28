@@ -44,7 +44,7 @@ Originally based off <https://github.com/bradleyfay/NBAStats>
 | PlayerYearOverYearSplits  | playerdashboardbyyearoveryear         |
 
 
-#### 4. Team
+#### 4. Team (All endpoints mapped)
 | Class Name                |  Endpoint                             |
 |:--------------------------|:--------------------------------------|
 | TeamSummary               | commoninfocommon                      |
@@ -67,6 +67,7 @@ Originally based off <https://github.com/bradleyfay/NBAStats>
 | TeamShotTracking          | teamdashptshots                       |
 | TeamReboundTracking       | teamdashptreb                         |
 | TeamPassTracking          | teamdashptpass                        |
+| TeamVsPlayer              | teamvsplayer                          |
 
 ## Planned development
 #### 1. Documentation
