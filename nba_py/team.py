@@ -382,7 +382,7 @@ class TeamGameLogs:
 
 
 class TeamSeasons:
-    _endpoint = 'teamgamelog'
+    _endpoint = 'teamyearbyyearstats'
 
     def __init__(self,
                  team_id,
