@@ -1,5 +1,5 @@
 from nba_py import _api_scrape, _get_json, CURRENT_SEASON
-from nba_py.constants import PerMode, League, SeasonType, MeasureType
+from nba_py.constants import *
 
 
 class PlayerList:
@@ -38,28 +38,28 @@ class PlayerGeneralSplits:
 
     def __init__(self,
                  player_id,
-                 measure_type=MeasureType.Base,
-                 per_mode=PerMode.PerGame,
-                 plus_minus='N',
-                 pace_adjust='N',
-                 rank='N',
-                 league_id=League.NBA,
+                 measure_type=MeasureType.Default,
+                 per_mode=PerMode.Default,
+                 plus_minus=PlusMinus.Default,
+                 pace_adjust=PaceAdjust.Default,
+                 rank=PaceAdjust.Default,
+                 league_id=League.Default,
                  season=CURRENT_SEASON,
-                 season_type=SeasonType.Regular,
-                 po_round='',
-                 outcome='',
-                 location='',
-                 month=0,
-                 season_segment='',
-                 date_from='',
-                 date_to='',
-                 opponent_team_id=0,
-                 vs_conference='',
-                 vs_division='',
-                 game_segment='',
-                 period=0,
-                 shot_clock_range='',
-                 last_n_games=0):
+                 season_type=SeasonType.Default,
+                 po_round=PlayoffRound.Default,
+                 outcome=Outcome.Default,
+                 location=Location.Default,
+                 month=Month.Default,
+                 season_segment=SeasonSegment.Default,
+                 date_from=DateFrom.Default,
+                 date_to=DateTo.Default,
+                 opponent_team_id=OpponentTeamID.Default,
+                 vs_conference=VsConference.Default,
+                 vs_division=VsDivision.Default,
+                 game_segment=GameSegment.Default,
+                 period=Period.Default,
+                 shot_clock_range=ShotClockRange.Default,
+                 last_n_games=LastNGames.Default):
         self.json = _get_json(endpoint=self._endpoint,
                               params={'PlayerID': player_id,
                                       'MeasureType': measure_type,

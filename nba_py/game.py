@@ -1,4 +1,5 @@
 from nba_py import _api_scrape, _get_json
+from nba_py.constants import *
 
 
 class Boxscore:
@@ -6,11 +7,11 @@ class Boxscore:
 
     def __init__(self,
                  game_id,
-                 range_type=0,
-                 start_period=0,
-                 end_period=0,
-                 start_range=0,
-                 end_range=0):
+                 range_type=RangeType.Default,
+                 start_period=StartPeriod.Default,
+                 end_period=EndPeriod.Default,
+                 start_range=StartRange.Default,
+                 end_range=EndRange.Default):
         self.json = _get_json(endpoint=self._endpoint,
                               params={'GameID': game_id,
                                       'RangeType': range_type,
@@ -114,8 +115,8 @@ class PlayByPlay:
 
     def __init__(self,
                  game_id,
-                 start_period=0,
-                 end_period=0):
+                 start_period=StartPeriod.Default,
+                 end_period=EndPeriod.Default):
         self.json = _get_json(endpoint=self._endpoint,
                               params={'GameID': game_id,
                                       'StartPeriod': start_period,
