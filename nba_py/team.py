@@ -343,3 +343,100 @@ class TeamPlayers(_TeamDashboard):
 
     def season_totals(self):
         return _api_scrape(self.json, 1)
+
+
+class TeamPlayersOnOffDetail(_TeamDashboard):
+    _endpoint = 'teamplayeronoffdetails'
+
+    def on_court(self):
+        return _api_scrape(self.json, 1)
+
+    def off_court(self):
+        return _api_scrape(self.json, 2)
+
+
+class TeamPlayerOnOffSummary(_TeamDashboard):
+    _endpoint = 'teamplayeronoffsummary'
+
+    def on_court(self):
+        return _api_scrape(self.json, 1)
+
+    def off_court(self):
+        return _api_scrape(self.json, 2)
+
+
+class TeamGameLogs:
+    _endpoint = 'teamgamelog'
+
+    def __init__(self,
+                 team_id,
+                 season=CURRENT_SEASON,
+                 season_type=SeasonType.Default):
+        self.json = _get_json(endpoint=_endpoint,
+                              params={'TeamID': team_id,
+                                      'Season': season,
+                                      'SeasonType': season_type})
+
+    def info(self):
+        return _api_scrape(self.json, 1)
+
+
+class TeamSeasons:
+    _endpoint = 'teamgamelog'
+
+    def __init__(self,
+                 team_id,
+                 season_type=SeasonType.Default,
+                 per_mode=PerMode.Default):
+        self.json = _get_json(endpoint=_endpoint,
+                              params={'TeamID': team_id,
+                                      'SeasonType': season_type,
+                                      'PerMode': per_mode})
+
+    def info(self):
+        return _api_scrape(self.json, 1)
+
+
+class TeamShotTracking(_TeamDashboard):
+    _endpoint = 'teamdashptshots'
+
+    def shot_clock_shooting(self):
+        return _api_scrape(self.json, 1)
+
+    def dribble_shooting(self):
+        return _api_scrape(self.json, 2)
+
+    def closest_defender_shooting(self):
+        return _api_scrape(self.json, 3)
+
+    def closest_defender_shooting_long(self):
+        return _api_scrape(self.json, 4)
+
+    def touch_time_shooting(self):
+        return _api_scrape(self.json, 5)
+
+
+class TeamReboundTracking(_TeamDashboard):
+    _endpoint = 'teamdashptreb'
+
+    def shot_type_rebounding(self):
+        return _api_scrape(self.json, 1)
+
+    def contested_rebounding(self):
+        return _api_scrape(self.json, 2)
+
+    def shot_distance_rebounding(self):
+        return _api_scrape(self.json, 3)
+
+    def rebound_distance_rebounding(self):
+        return _api_scrape(self.json, 4)
+
+
+class TeamPassTracking(_TeamDashboard):
+    _endpoint = 'teamdashptpass'
+
+    def passes_made(self):
+        return _api_scrape(self.json, 0)
+
+    def passes_recieved(self):
+        return _api_scrape(self.json, 1)
