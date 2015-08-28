@@ -440,3 +440,85 @@ class TeamPassTracking(_TeamDashboard):
 
     def passes_recieved(self):
         return _api_scrape(self.json, 1)
+
+
+class TeamVsPlayer:
+    _endpoint = 'teamvsplayer'
+
+    def __init__(self,
+                 team_id,
+                 vs_player_id,
+                 measure_type=MeasureType.Default,
+                 per_mode=PerMode.Default,
+                 plus_minus=PlusMinus.Default,
+                 pace_adjust=PaceAdjust.Default,
+                 rank=Rank.Default,
+                 league_id=League.Default,
+                 season=CURRENT_SEASON,
+                 season_type=SeasonType.Default,
+                 po_round=PlayoffRound.Default,
+                 outcome=Outcome.Default,
+                 location=Location.Default,
+                 month=Month.Default,
+                 season_segment=SeasonSegment.Default,
+                 date_from=DateFrom.Default,
+                 date_to=DateTo.Default,
+                 opponent_team_id=OpponentTeamID.Default,
+                 vs_conference=VsConference.Default,
+                 vs_division=VsDivision.Default,
+                 game_segment=GameSegment.Default,
+                 period=Period.Default,
+                 shot_clock_range=ShotClockRange.Default,
+                 last_n_games=LastNGames.Default):
+        self.json = _get_json(endpoint=self._endpoint,
+                              params={'TeamID': team_id,
+                                      'VsPlayerID': vs_player_id,
+                                      'MeasureType': measure_type,
+                                      'PerMode': per_mode,
+                                      'PlusMinus': plus_minus,
+                                      'PaceAdjust': pace_adjust,
+                                      'Rank': rank,
+                                      'LeagueID': league_id,
+                                      'Season': season,
+                                      'SeasonType': season_type,
+                                      'PORound': po_round,
+                                      'Outcome': outcome,
+                                      'Location': location,
+                                      'Month': month,
+                                      'SeasonSegment': season_segment,
+                                      'DateFrom': date_from,
+                                      'DateTo': date_to,
+                                      'OpponentTeamID': opponent_team_id,
+                                      'VsConference': vs_conference,
+                                      'VsDivision': vs_division,
+                                      'GameSegment': game_segment,
+                                      'Period': period,
+                                      'ShotClockRange': shot_clock_range,
+                                      'LastNGames': last_n_games})
+
+    def overall(self):
+        return _api_scrape(self.json, 0)
+
+    def vs_player_overall(self):
+        return _api_scrape(self.json, 1)
+
+    def on_off_court(self):
+        return _api_scrape(self.json, 2)
+
+    def shot_distance_overall(self):
+        return _api_scrape(self.json, 3)
+
+    def shot_distance_on_court(self):
+        return _api_scrape(self.json, 4)
+
+    def shot_distance_off_court(self):
+        return _api_scrape(self.json, 5)
+
+    def shot_area_overall(self):
+        return _api_scrape(self.json, 6)
+
+    def shot_area_on_court(self):
+        return _api_scrape(self.json, 6)
+
+    def shot_area_off_court(self):
+        return _api_scrape(self.json, 7)
