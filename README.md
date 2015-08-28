@@ -60,6 +60,13 @@ Originally based off <https://github.com/bradleyfay/NBAStats>
 | TeamYearOverYearSplits    | teamdashboardbyyearoveryear           |
 | TeamLineups               | teamdashlineups                       |
 | TeamPlayers               | teamplayerdashboard                   |
+| TeamPlayersOnOffDetail    | teamplayeronoffdetails                |
+| TeamPlayerOnOffSummary    | teamplayeronoffsummary                |
+| TeamGameLogs              | teamgamelog                           |
+| TeamSeasons               | teamyearbyyearstats                   |
+| TeamShotTracking          | teamdashptshots                       |
+| TeamReboundTracking       | teamdashptreb                         |
+| TeamPassTracking          | teamdashptpass                        |
 
 ## Planned development
 #### 1. Documentation
