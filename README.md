@@ -1,11 +1,11 @@
-# *nba_py - nbastats.com for python*
+# *nba_py - [stats.nba.com](stats.nba.com) API for python*
 
 ## Summary
 A python facing API for stats.nba.com (Still in heavy development)
 
-Originally based off [https://github.com/bradleyfay/NBAStats](https://github.com/bradleyfay/NBAStats)
+Originally based off <https://github.com/bradleyfay/NBAStats>
 
-    Current Version = 0.1a1
+`Current Version = 0.1a1`
 
 ## Dependencies
   * [pandas](http://pandas.pydata.org/)
@@ -13,28 +13,53 @@ Originally based off [https://github.com/bradleyfay/NBAStats](https://github.com
 
 ## Things that are currently finished
 #### 1. Main Package
-  * stats.nba.com/scoreboard/
+| Class Name                |  Endpoint                             |
+|:--------------------------|:--------------------------------------|
+| Scoreboard                | Scoreboard                            |
 
-### 2. Game
-  * stats.nba.com/boxscore/
-  * stats.nba.com/boxscorescoring/
-  * stats.nba.com/boxscoreusage/
-  * stats.nba.com/boxscoremisc/
-  * stats.nba.com/boxscoreadvanced/
-  * stats.nba.com/boxscorefourfactors/
-  * stats.nba.com/playbyplay/
+#### 2. Game
+| Class Name                |  Endpoint                             |
+|:--------------------------|:--------------------------------------|
+| Boxscore                  | boxscore                              |
+| BoxscoreScoring           | boxscorescoring                       |
+| BoxscoreUsage             | boxscoreusage                         |
+| BoxscoreMisc              | boxscoremisc                          |
+| BoxscoreAdvanced          | boxscoreadvanced                      |
+| BoxscoreFourFactors       | boxscorefourfactors                   |
+| PlayByPlay                | playbyplay                            |
 
 #### 3. Player
-  * stats.nba.com/commonallplayers/
-  * stats.nba.com/commonplayerinfo/
-  * stats.nba.com/playerdashboardbygeneralsplits/
-  * stats.nba.com/playercareerstats/
-  * stats.nba.com/playerprofilev2/
-  * stats.nba.com/playergamelog/
+| Class Name                |  Endpoint                             |
+|:--------------------------|:--------------------------------------|
+| PlayerList                | commonallplayers                      |
+| PlayerSummary             | commonplayerinfo                      |
+| PlayerProfile             | playerprofilev2                       |
+| PlayerGeneralSplits       | playerdashboardbygeneralsplits        |
+| PlayerOpponenetSplits     | playeropponentsplits                  |
+| PlayerLastNGamesSplits    | playerdashboardbylastngames           |
+| PlayerInGameSplits        | playerdashboardbygamesplits           |
+| PlayerClutchSplits        | playerdashboardbyclutch               |
+| PlayerShootingSplits      | playerdashboardbyshootingsplits       |
+| PlayerPerformanceSplits   | playerdashboardbyplayerperformance    |
+| PlayerYearOverYearSplits  | playerdashboardbyyearoveryear         |
+
 
 #### 4. Team
-  * stats.nba.com/teaminfocommon/
-  * ~~stats.nba.com/teamdashboardbygeneralsplits/~~
+| Class Name                |  Endpoint                             |
+|:--------------------------|:--------------------------------------|
+| TeamSummary               | commoninfocommon                      |
+| TeamList                  | commonteamyears                       |
+| TeamCommonRoster          | commonteamroster                      |
+| TeamGeneralSplits         | teamdashboardbygeneralsplits          |
+| TeamOpponenetSplits       | teamdashboardbyopponent               |
+| TeamLastNGamesSplits      | teamdashboardbylastngames             |
+| TeamInGameSplits          | teamdashboardbygamesplits             |
+| TeamClutchSplits          | teamdashboardbyclutch                 |
+| TeamShootingSplits        | teamdashboardbyshootingsplits         |
+| TeamPerformanceSplits     | teamdashboardbyteamperformance        |
+| TeamYearOverYearSplits    | teamdashboardbyyearoveryear           |
+| TeamLineups               | teamdashlineups                       |
+| TeamPlayers               | teamplayerdashboard                   |
 
 ## Planned development
 #### 1. Documentation
