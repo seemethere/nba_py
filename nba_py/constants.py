@@ -365,8 +365,21 @@ TEAMS = {
 }
 
 
+class _DefaultN:
+    Default = 'N'
+
+
+class _DefaultBlank:
+    Default = ''
+
+
+class _DefaultZero:
+    Default = '0'
+
+
 class League:
     NBA = '00'
+    Default = NBA
 
 
 class PerMode:
@@ -381,11 +394,13 @@ class PerMode:
     PerPlay = 'PerPlay'
     Per100Possessions = 'Per100Possessions'
     Per100Plays = 'Per100Plays'
+    Default = PerGame
 
 
 class SeasonType:
     Regular = 'Regular Season'
     Playoffs = 'Playoffs'
+    Default = Regular
 
 
 class MeasureType:
@@ -396,3 +411,152 @@ class MeasureType:
     Scoring = 'Scoring'
     Opponent = 'Opponent'
     Usage = 'Usage'
+    Default = Base
+
+
+class GroupQuantity:
+    Default = 5
+
+
+class Outcome(_DefaultBlank):
+    Win = 'W'
+    Loss = 'L'
+
+
+class Location(_DefaultBlank):
+    Home = 'Home'
+    Away = 'Away'
+
+
+class SeasonSegment(_DefaultBlank):
+    EntireSeason = ''
+    PreAllStar = 'Pre All-Star'
+    PostAllStar = 'Post All-Star'
+
+
+class DateFrom(_DefaultBlank):
+    pass
+
+
+class DateTo(_DefaultBlank):
+    pass
+
+
+class VsConference(_DefaultBlank):
+    All = ''
+    East = 'East'
+    West = 'West'
+
+
+class VsDivision(_DefaultBlank):
+    All = ''
+    Atlantic = 'Atlantic'
+    Central = 'Central'
+    Northwest = 'Northwest'
+    Pacific = 'Pacific'
+    Southeast = 'Southeast'
+    Southwest = 'Southwest'
+
+
+class GameSegment(_DefaultBlank):
+    EntireGame = ''
+    FirstHalf = 'First Half'
+    SecondHalf = 'Second Half'
+    Overtime = 'Overtime'
+
+
+class ShotClockRange(_DefaultBlank):
+    AllRanges = ''
+    # I honestly don't know anytime the shot clok would be off
+    ShotClockOff = 'ShotClock Off'
+
+    def get(self, n):
+        if n > 24 or n < 0:
+            return ''
+        elif 22 <= n <= 24:
+            return '24-22'
+        elif 18 <= n < 22:
+            return '22-18 Very Early'
+        elif 15 <= n < 18:
+            return '18-15 Early'
+        elif 7 <= n < 15:
+            return '15-7 Average'
+        elif 4 <= n < 7:
+            return '7-4 Late'
+        elif 0 <= n < 4:
+            return '4-0 Very Late'
+
+
+class PlusMinus(_DefaultN):
+    pass
+
+
+class PaceAdjust(_DefaultN):
+    pass
+
+
+class Rank(_DefaultN):
+    pass
+
+
+class OpponentTeamID(_DefaultZero):
+    pass
+
+
+class Period(_DefaultZero):
+    AllQuarters = '0'
+    FirstQuarter = '1'
+    SecondQuarter = '2'
+    ThirdQuarter = '3'
+    FourthQuarter = '4'
+
+    def Overtime(self, n):
+        return str(4 + n)
+
+
+class LastNGames(_DefaultZero):
+    pass
+
+
+class PlayoffRound(_DefaultZero):
+    All = '0'
+    QuarterFinals = '1'
+    SemiFinals = '2'
+    ConferenceFinals = '3'
+    Finals = '4'
+
+
+class Month(_DefaultZero):
+    All = '0'
+    October = '1'
+    Novemeber = '2'
+    December = '3'
+    January = '4'
+    February = '5'
+    March = '6'
+    April = '7'
+    May = '8'
+    June = '9'
+    July = '10'
+    August = '11'
+    September = '12'
+
+
+class RangeType(_DefaultZero):
+    pass
+
+
+class StartRange(_DefaultZero):
+    pass
+
+
+class EndRange(_DefaultZero):
+    pass
+
+
+class StartPeriod(Period):
+    pass
+
+
+class EndPeriod(Period):
+    pass
