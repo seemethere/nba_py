@@ -1,5 +1,5 @@
 from nba_py import _api_scrape, _get_json, CURRENT_SEASON
-from nba_py.constants import League, MeasureType, PerMode, SeasonType
+from nba_py.constants import *
 
 
 class TeamList:
@@ -21,7 +21,7 @@ class TeamSummary:
                  team_id,
                  season=CURRENT_SEASON,
                  league_id=League.NBA,
-                 season_type='Regular Season'):
+                 season_type=SeasonType.Default):
         self.json = _get_json(endpoint=self._endpoint,
                               params={'TeamID': team_id,
                                       'Season': season,
@@ -57,28 +57,28 @@ class _TeamDashboard:
 
     def __init__(self,
                  team_id,
-                 measure_type=MeasureType.Base,
-                 per_mode=PerMode.PerGame,
-                 plus_minus='N',
-                 pace_adjust='N',
-                 rank='N',
-                 league_id=League.NBA,
+                 measure_type=MeasureType.Default,
+                 per_mode=PerMode.Default,
+                 plus_minus=PlusMinus.Default,
+                 pace_adjust=PaceAdjust.Default,
+                 rank=Rank.Default,
+                 league_id=League.Default,
                  season=CURRENT_SEASON,
-                 season_type=SeasonType.Regular,
-                 po_round='',
-                 outcome='',
-                 location='',
-                 month=0,
-                 season_segment='',
-                 date_from='',
-                 date_to='',
-                 opponent_team_id=0,
-                 vs_conference='',
-                 vs_division='',
-                 game_segment='',
-                 period=0,
-                 shot_clock_range='',
-                 last_n_games=0):
+                 season_type=SeasonType.Default,
+                 po_round=PlayoffRound.Default,
+                 outcome=Outcome.Default,
+                 location=Location.Default,
+                 month=Month.Default,
+                 season_segment=SeasonSegment.Default,
+                 date_from=DateFrom.Default,
+                 date_to=DateTo.Default,
+                 opponent_team_id=OpponentTeamID.Default,
+                 vs_conference=VsConference.Default,
+                 vs_division=VsDivision.Default,
+                 game_segment=GameSegment.Default,
+                 period=Period.Default,
+                 shot_clock_range=ShotClockRange.Default,
+                 last_n_games=LastNGames.Default):
         self.json = _get_json(endpoint=self._endpoint,
                               params={'TeamID': team_id,
                                       'MeasureType': measure_type,
@@ -278,4 +278,68 @@ class TeamYearOverYearSplits(_TeamDashboard):
     _endpoint = 'teamdashboardbyyearoveryear'
 
     def by_year(self):
+        return _api_scrape(self.json, 1)
+
+
+class TeamLineups:
+    _endpoint = 'teamdashlineups'
+
+    def __init__(self,
+                 team_id,
+                 game_id='',
+                 group_quantity=GroupQuantity.Default,
+                 season=CURRENT_SEASON,
+                 season_type=SeasonType.Default,
+                 measure_type=MeasureType.Default,
+                 per_mode=PerMode.Default,
+                 plus_minus=PlusMinus.Default,
+                 pace_adjust=PaceAdjust.Default,
+                 rank=Rank.Default,
+                 outcome=Outcome.Default,
+                 location=Location.Default,
+                 month=Month.Default,
+                 season_segment=SeasonSegment.Default,
+                 date_from=DateFrom.Default,
+                 date_to=DateTo.Default,
+                 opponent_team_id=OpponentTeamID.Default,
+                 vs_conference=VsConference.Default,
+                 vs_division=VsDivision.Default,
+                 game_segment=GameSegment.Default,
+                 period=Period.Default,
+                 last_n_games=LastNGames.Default):
+        self.json = _get_json(endpoint=self._endpoint,
+                              params={'GroupQuantity': group_quantity,
+                                      'GameID': game_id,
+                                      'TeamID': team_id,
+                                      'Season': season,
+                                      'SeasonType': season_type,
+                                      'MeasureType': measure_type,
+                                      'PerMode': per_mode,
+                                      'PlusMinus': plus_minus,
+                                      'PaceAdjust': pace_adjust,
+                                      'Rank': rank,
+                                      'Outcome': outcome,
+                                      'Location': location,
+                                      'Month': month,
+                                      'SeasonSegment': season_segment,
+                                      'DateFrom': date_from,
+                                      'DateTo': date_to,
+                                      'OpponentTeamID': opponent_team_id,
+                                      'VsConference': vs_conference,
+                                      'VsDivision': vs_division,
+                                      'GameSegment': game_segment,
+                                      'Period': period,
+                                      'LastNGames': last_n_games})
+
+    def overall(self):
+        return _api_scrape(self.json, 0)
+
+    def lineups(self):
+        return _api_scrape(self.json, 1)
+
+
+class TeamPlayers(_TeamDashboard):
+    _endpoint = 'teamplayerdashboard'
+
+    def season_totals(self):
         return _api_scrape(self.json, 1)
