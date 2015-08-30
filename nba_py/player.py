@@ -2,6 +2,15 @@ from nba_py import _api_scrape, _get_json, CURRENT_SEASON
 from nba_py.constants import *
 
 
+def get_player(first_name,
+               last_name,
+               season=CURRENT_SEASON,
+               only_current=0):
+    name = '{}, {}'.format(last_name, first_name).lower()
+    pl = PlayerList(season=season, only_current=only_current).info()
+    return pl[pl.DISPLAY_LAST_COMMA_FIRST.str.lower() == name]['PERSON_ID']
+
+
 class PlayerList:
     _endpoint = 'commonallplayers'
 
