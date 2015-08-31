@@ -3,7 +3,7 @@ from nba_py.constants import *
 
 
 class TeamList:
-    _endpoint = 'commonteamtears'
+    _endpoint = 'commonteamyears'
 
     def __init__(self,
                  league_id=League.NBA):
@@ -345,7 +345,7 @@ class TeamPlayers(_TeamDashboard):
         return _api_scrape(self.json, 1)
 
 
-class TeamPlayersOnOffDetail(_TeamDashboard):
+class TeamPlayerOnOffDetail(_TeamDashboard):
     _endpoint = 'teamplayeronoffdetails'
 
     def on_court(self):
