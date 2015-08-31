@@ -18,10 +18,16 @@ from nba_py.constants import TEAMS
 # players = team.TeamPlayers(TEAMS['MIL']['id'], season='2013-14')
 # print players.overall()
 
-plyr = get_player('DeRek', 'FiSHer', season='2008-09')
+
+# What this will do is get the
+plyr = get_player('Tyson', 'Chandler', just_id=False)
 tvp = team.TeamVsPlayer(team_id=TEAMS['SAS']['id'],
-                        vs_player_id=plyr,
-                        season='2008-09')
-sao = tvp.shot_area_overall()
-over_40 = sao[sao.FG_PCT > 0.40]
-print over_40
+                        vs_player_id=plyr['PERSON_ID'],
+                        season='2010-11')
+sa_on = tvp.shot_area_on_court()
+rest_on = sa_on[sa_on.GROUP_VALUE == 'Restricted Area']
+sa_off = tvp.shot_area_off_court()
+rest_off = sa_off[sa_off.GROUP_VALUE == 'Restricted Area']
+print 'Spurs stats vs Tyson Chandler (2010-11)'
+print 'On court:  {}'.format(float(rest_on['FG_PCT']))
+print 'Off court: {}'.format(float(rest_off['FG_PCT']))
