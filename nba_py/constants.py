@@ -1,5 +1,3 @@
-# from enum import Enum
-
 TEAMS = {
     'ATL': {
         'abbr': 'ATL',
