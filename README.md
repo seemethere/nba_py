@@ -8,7 +8,7 @@ Originally based off <https://github.com/bradleyfay/NBAStats>
 `Current Version = 0.1a1`
 
 ## Dependencies
-  * [pandas](http://pandas.pydata.org/)
+  * [pandas](http://pandas.pydata.org/) [(Installation Help)](https://github.com/seemethere/nba_py/wiki/Installing-pandas)
 
 
 ## Things that are currently finished
