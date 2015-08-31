@@ -5,10 +5,14 @@ from nba_py.constants import *
 def get_player(first_name,
                last_name,
                season=CURRENT_SEASON,
-               only_current=0):
+               only_current=0,
+               just_id=True):
     name = '{}, {}'.format(last_name, first_name).lower()
     pl = PlayerList(season=season, only_current=only_current).info()
-    return pl[pl.DISPLAY_LAST_COMMA_FIRST.str.lower() == name]['PERSON_ID']
+    if just_id:
+        return pl[pl.DISPLAY_LAST_COMMA_FIRST.str.lower() == name]['PERSON_ID']
+    else:
+        return pl[pl.DISPLAY_LAST_COMMA_FIRST.str.lower() == name]
 
 
 class PlayerList:
