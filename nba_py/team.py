@@ -518,7 +518,7 @@ class TeamVsPlayer:
         return _api_scrape(self.json, 6)
 
     def shot_area_on_court(self):
-        return _api_scrape(self.json, 6)
+        return _api_scrape(self.json, 7)
 
     def shot_area_off_court(self):
-        return _api_scrape(self.json, 7)
+        return _api_scrape(self.json, 8)
