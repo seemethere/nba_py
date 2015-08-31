@@ -19,7 +19,8 @@ from nba_py.constants import TEAMS
 # print players.overall()
 
 
-# What this will do is get the
+# What this will do is get the stats for:
+# Spurs vs Tyson Chandler for the 2010-11 season
 plyr = get_player('Tyson', 'Chandler', just_id=False)
 tvp = team.TeamVsPlayer(team_id=TEAMS['SAS']['id'],
                         vs_player_id=plyr['PERSON_ID'],
