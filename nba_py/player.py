@@ -172,59 +172,59 @@ class PlayerInGameSplits(_PlayerDashboard):
 class PlayerClutchSplits(_PlayerDashboard):
     _endpoint = 'playerdashboardbyclutch'
 
-        def last5min_deficit_5point(self):
-            """
-            Results in last 5 minutes <= 5 points
-            """
-            return _api_scrape(self.json, 1)
+    def last5min_deficit_5point(self):
+        """
+        Results in last 5 minutes <= 5 points
+        """
+        return _api_scrape(self.json, 1)
 
-        def last3min_deficit_5point(self):
-            """
-            Results in last 5 minutes <= 5 points
-            """
-            return _api_scrape(self.json, 2)
+    def last3min_deficit_5point(self):
+        """
+        Results in last 5 minutes <= 5 points
+        """
+        return _api_scrape(self.json, 2)
 
-        def last1min_deficit_5point(self):
-            """
-            Results in last 5 minutes <= 5 points
-            """
-            return _api_scrape(self.json, 3)
+    def last1min_deficit_5point(self):
+        """
+        Results in last 5 minutes <= 5 points
+        """
+        return _api_scrape(self.json, 3)
 
-        def last30sec_deficit_3point(self):
-            """
-            Results in last 5 minutes <= 5 points
-            """
-            return _api_scrape(self.json, 4)
+    def last30sec_deficit_3point(self):
+        """
+        Results in last 5 minutes <= 5 points
+        """
+        return _api_scrape(self.json, 4)
 
-        def last10sec_deficit_3point(self):
-            """
-            Results in last 5 minutes <= 5 points
-            """
-            return _api_scrape(self.json, 5)
+    def last10sec_deficit_3point(self):
+        """
+        Results in last 5 minutes <= 5 points
+        """
+        return _api_scrape(self.json, 5)
 
-        def last5min_plusminus_5point(self):
-            """
-            Last 5 minutes +/= 5 points
-            """
-            return _api_scrape(self.json, 6)
+    def last5min_plusminus_5point(self):
+        """
+        Last 5 minutes +/= 5 points
+        """
+        return _api_scrape(self.json, 6)
 
-        def last3min_plusminus_5point(self):
-            """
-            Last 3 minutes +/= 5 points
-            """
-            return _api_scrape(self.json, 7)
+    def last3min_plusminus_5point(self):
+        """
+        Last 3 minutes +/= 5 points
+        """
+        return _api_scrape(self.json, 7)
 
-        def last1min_plusminus_5point(self):
-            """
-            Last 1 minutes +/= 5 points
-            """
-            return _api_scrape(self.json, 8)
+    def last1min_plusminus_5point(self):
+        """
+        Last 1 minutes +/= 5 points
+        """
+        return _api_scrape(self.json, 8)
 
-        def last30sec_plusminus_5point(self):
-            """
-            Last 30 seconds +/= 3 points
-            """
-            return _api_scrape(self.json, 9)
+    def last30sec_plusminus_5point(self):
+        """
+        Last 30 seconds +/= 3 points
+        """
+        return _api_scrape(self.json, 9)
 
 
 class PlayerShootingSplits(_PlayerDashboard):
