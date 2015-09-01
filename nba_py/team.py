@@ -130,10 +130,13 @@ class TeamGeneralSplits(_TeamDashboard):
 class TeamOpponentSplits(_TeamDashboard):
     _endpoint = 'teamdashboardbyopponent'
 
-    def division(self):
+    def by_conference(self):
         return _api_scrape(self.json, 1)
 
-    def opponent(self):
+    def by_division(self):
+        return _api_scrape(self.json, 2)
+
+    def by_opponent(self):
         return _api_scrape(self.json, 2)
 
 
@@ -236,7 +239,7 @@ class TeamClutchSplits(_TeamDashboard):
         """
         Last 30 seconds +/= 3 points
         """
-        return _api_scrape(self.json, 7)
+        return _api_scrape(self.json, 9)
 
 
 class TeamShootingSplits(_TeamDashboard):
@@ -254,11 +257,14 @@ class TeamShootingSplits(_TeamDashboard):
     def assisted_shots(self):
         return _api_scrape(self.json, 4)
 
-    def shot_types(self):
+    def shot_type_summary(self):
         return _api_scrape(self.json, 5)
 
-    def assissted_by(self):
+    def shot_type_detail(self):
         return _api_scrape(self.json, 6)
+
+    def assissted_by(self):
+        return _api_scrape(self.json, 7)
 
 
 class TeamPerformanceSplits(_TeamDashboard):
