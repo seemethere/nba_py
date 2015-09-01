@@ -46,8 +46,8 @@ class PlayerSummary:
         return _api_scrape(self.json, 1)
 
 
-class PlayerGeneralSplits:
-    _endpoint = 'playerdashboardbygeneralsplits'
+class _PlayerDashboard:
+    _endpoint = ''
 
     def __init__(self,
                  player_id,
@@ -98,23 +98,178 @@ class PlayerGeneralSplits:
                                       'ShotClockRange': shot_clock_range,
                                       'LastNGames': last_n_games})
 
-    def overall_dashboard(self):
+    def overall(self):
         return _api_scrape(self.json, 0)
 
-    def location_dashboard(self):
+
+class PlayerGeneralSplits(_PlayerDashboard):
+    _endpoint = 'playerdashboardbygeneralsplits'
+
+    def location(self):
         return _api_scrape(self.json, 1)
 
-    def win_losses_dashboard(self):
+    def win_losses(self):
         return _api_scrape(self.json, 2)
 
-    def pre_post_all_star_dashboard(self):
+    def pre_post_all_star(self):
         return _api_scrape(self.json, 3)
 
     def starting_position(self):
         return _api_scrape(self.json, 4)
 
-    def days_rest_dashboard(self):
+    def days_rest(self):
         return _api_scrape(self.json, 5)
+
+
+class PlayerOpponentSplits(_PlayerDashboard):
+    _endpoint = 'playerdashboardbyopponent'
+
+    def by_conference(self):
+        return _api_scrape(self.json, 1)
+
+    def by_division(self):
+        return _api_scrape(self.json, 2)
+
+    def by_opponent(self):
+        return _api_scrape(self.json, 3)
+
+
+class PlayerLastNGamesSplits(_PlayerDashboard):
+    _endpoint = 'playerdashboardbylastngames'
+
+    def last5(self):
+        return _api_scrape(self.json, 1)
+
+    def last10(self):
+        return _api_scrape(self.json, 2)
+
+    def last15(self):
+        return _api_scrape(self.json, 3)
+
+    def last20(self):
+        return _api_scrape(self.json, 4)
+
+    def gamenumber(self):
+        return _api_scrape(self.json, 5)
+
+
+class PlayerInGameSplits(_PlayerDashboard):
+    _endpoint = 'playerdashboardbygamesplits'
+
+    def by_half(self):
+        return _api_scrape(self.json, 1)
+
+    def by_period(self):
+        return _api_scrape(self.json, 2)
+
+    def by_score_margin(self):
+        return _api_scrape(self.json, 3)
+
+    def by_actual_margin(self):
+        return _api_scrape(self.json, 4)
+
+
+class PlayerClutchSplits(_PlayerDashboard):
+    _endpoint = 'playerdashboardbyclutch'
+
+        def last5min_deficit_5point(self):
+            """
+            Results in last 5 minutes <= 5 points
+            """
+            return _api_scrape(self.json, 1)
+
+        def last3min_deficit_5point(self):
+            """
+            Results in last 5 minutes <= 5 points
+            """
+            return _api_scrape(self.json, 2)
+
+        def last1min_deficit_5point(self):
+            """
+            Results in last 5 minutes <= 5 points
+            """
+            return _api_scrape(self.json, 3)
+
+        def last30sec_deficit_3point(self):
+            """
+            Results in last 5 minutes <= 5 points
+            """
+            return _api_scrape(self.json, 4)
+
+        def last10sec_deficit_3point(self):
+            """
+            Results in last 5 minutes <= 5 points
+            """
+            return _api_scrape(self.json, 5)
+
+        def last5min_plusminus_5point(self):
+            """
+            Last 5 minutes +/= 5 points
+            """
+            return _api_scrape(self.json, 6)
+
+        def last3min_plusminus_5point(self):
+            """
+            Last 3 minutes +/= 5 points
+            """
+            return _api_scrape(self.json, 7)
+
+        def last1min_plusminus_5point(self):
+            """
+            Last 1 minutes +/= 5 points
+            """
+            return _api_scrape(self.json, 8)
+
+        def last30sec_plusminus_5point(self):
+            """
+            Last 30 seconds +/= 3 points
+            """
+            return _api_scrape(self.json, 9)
+
+
+class PlayerShootingSplits(_PlayerDashboard):
+    _endpoint = 'playerdashboardbyshootingsplits'
+
+    def shot_5ft(self):
+        return _api_scrape(self.json, 1)
+
+    def shot_8ft(self):
+        return _api_scrape(self.json, 2)
+
+    def shot_areas(self):
+        return _api_scrape(self.json, 3)
+
+    def assisted_shots(self):
+        return _api_scrape(self.json, 4)
+
+    def shot_types_summary(self):
+        return _api_scrape(self.json, 5)
+
+    def shot_types_detail(self):
+        return _api_scrape(self.json, 6)
+
+    def assissted_by(self):
+        return _api_scrape(self.json, 7)
+
+
+class PlayerPerformanceSplits(_PlayerDashboard):
+    _endpoint = 'playerdashboardbyteamperformance'
+
+    def score_differential(self):
+        return _api_scrape(self.json, 1)
+
+    def points_scored(self):
+        return _api_scrape(self.json, 2)
+
+    def points_against(self):
+        return _api_scrape(self.json, 3)
+
+
+class PlayerYearOverYearSplits(_PlayerDashboard):
+    _enpoint = 'playerdashboardbyyearoveryear'
+
+    def by_year(self):
+        return _api_scrape(self.json, 1)
 
 
 class PlayerCareer:
