@@ -6,6 +6,7 @@ A python facing API for stats.nba.com (Still in heavy development)
 Originally based off <https://github.com/bradleyfay/NBAStats>
 
 `Current Version = 0.1a1`
+[![Build Status](https://travis-ci.org/seemethere/nba_py.svg?branch=master)](https://travis-ci.org/seemethere/nba_py)
 
 ## Dependencies
   * [pandas](http://pandas.pydata.org/) [(Installation Help)](https://github.com/seemethere/nba_py/wiki/Installing-pandas)
