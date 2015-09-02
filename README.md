@@ -11,72 +11,8 @@ Originally based off <https://github.com/bradleyfay/NBAStats>
 ## Dependencies
   * [pandas](http://pandas.pydata.org/) [(Installation Help)](https://github.com/seemethere/nba_py/wiki/Installing-pandas)
 
-
-## Things that are currently finished
-#### 1. Main Package
-| Class Name                |  Endpoint                             |
-|:--------------------------|:--------------------------------------|
-| Scoreboard                | Scoreboard                            |
-
-#### 2. Game
-| Class Name                |  Endpoint                             |
-|:--------------------------|:--------------------------------------|
-| Boxscore                  | boxscore                              |
-| BoxscoreScoring           | boxscorescoring                       |
-| BoxscoreUsage             | boxscoreusage                         |
-| BoxscoreMisc              | boxscoremisc                          |
-| BoxscoreAdvanced          | boxscoreadvanced                      |
-| BoxscoreFourFactors       | boxscorefourfactors                   |
-| PlayByPlay                | playbyplay                            |
-
-#### 3. Player (All endpoints mapped)
-| Class Name                |  Endpoint                             |
-|:--------------------------|:--------------------------------------|
-| PlayerList                | commonallplayers                      |
-| PlayerSummary             | commonplayerinfo                      |
-| PlayerProfile             | playerprofilev2                       |
-| PlayerGeneralSplits       | playerdashboardbygeneralsplits        |
-| PlayerOpponenetSplits     | playeropponentsplits                  |
-| PlayerLastNGamesSplits    | playerdashboardbylastngames           |
-| PlayerInGameSplits        | playerdashboardbygamesplits           |
-| PlayerClutchSplits        | playerdashboardbyclutch               |
-| PlayerShootingSplits      | playerdashboardbyshootingsplits       |
-| PlayerPerformanceSplits   | playerdashboardbyplayerperformance    |
-| PlayerYearOverYearSplits  | playerdashboardbyyearoveryear         |
-| PlayerCareer              | playercareerstats                     |
-| PlayerGameLogs            | playergamelog                         |
-| PlayerShotTracking        | playerdashptshots                     |
-| PlayerReboundTracking     | playerdashptreb                       |
-| PlayerPassTracking        | playerdashptpass                      |
-| PlayerDefenseTracking     | playerdashptshotdefend                |
-| PlayerShotLogTracking     | playerdashptshotlog                   |
-| PlayerReboundLogTracking  | playerdashptreboundlogs               |
-| PlayerVsPlayer            | playervsplayer                        |
-
-#### 4. Team (All endpoints mapped)
-| Class Name                |  Endpoint                             |
-|:--------------------------|:--------------------------------------|
-| TeamSummary               | commoninfocommon                      |
-| TeamList                  | commonteamyears                       |
-| TeamCommonRoster          | commonteamroster                      |
-| TeamGeneralSplits         | teamdashboardbygeneralsplits          |
-| TeamOpponenetSplits       | teamdashboardbyopponent               |
-| TeamLastNGamesSplits      | teamdashboardbylastngames             |
-| TeamInGameSplits          | teamdashboardbygamesplits             |
-| TeamClutchSplits          | teamdashboardbyclutch                 |
-| TeamShootingSplits        | teamdashboardbyshootingsplits         |
-| TeamPerformanceSplits     | teamdashboardbyteamperformance        |
-| TeamYearOverYearSplits    | teamdashboardbyyearoveryear           |
-| TeamLineups               | teamdashlineups                       |
-| TeamPlayers               | teamplayerdashboard                   |
-| TeamPlayersOnOffDetail    | teamplayeronoffdetails                |
-| TeamPlayerOnOffSummary    | teamplayeronoffsummary                |
-| TeamGameLogs              | teamgamelog                           |
-| TeamSeasons               | teamyearbyyearstats                   |
-| TeamShotTracking          | teamdashptshots                       |
-| TeamReboundTracking       | teamdashptreb                         |
-| TeamPassTracking          | teamdashptpass                        |
-| TeamVsPlayer              | teamvsplayer                          |
+## Completed work
+  * See the [wiki](https://github.com/seemethere/nba_py/wiki/Completed-Work-Log)
 
 ## Planned development
 #### 1. Documentation
