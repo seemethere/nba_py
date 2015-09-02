@@ -266,7 +266,7 @@ class PlayerPerformanceSplits(_PlayerDashboard):
 
 
 class PlayerYearOverYearSplits(_PlayerDashboard):
-    _enpoint = 'playerdashboardbyyearoveryear'
+    _endpoint = 'playerdashboardbyyearoveryear'
 
     def by_year(self):
         return _api_scrape(self.json, 1)
