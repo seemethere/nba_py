@@ -28,7 +28,7 @@ Originally based off <https://github.com/bradleyfay/NBAStats>
 | BoxscoreFourFactors       | boxscorefourfactors                   |
 | PlayByPlay                | playbyplay                            |
 
-#### 3. Player
+#### 3. Player (All endpoints mapped)
 | Class Name                |  Endpoint                             |
 |:--------------------------|:--------------------------------------|
 | PlayerList                | commonallplayers                      |
@@ -42,7 +42,15 @@ Originally based off <https://github.com/bradleyfay/NBAStats>
 | PlayerShootingSplits      | playerdashboardbyshootingsplits       |
 | PlayerPerformanceSplits   | playerdashboardbyplayerperformance    |
 | PlayerYearOverYearSplits  | playerdashboardbyyearoveryear         |
-
+| PlayerCareer              | playercareerstats                     |
+| PlayerGameLogs            | playergamelog                         |
+| PlayerShotTracking        | playerdashptshots                     |
+| PlayerReboundTracking     | playerdashptreb                       |
+| PlayerPassTracking        | playerdashptpass                      |
+| PlayerDefenseTracking     | playerdashptshotdefend                |
+| PlayerShotLogTracking     | playerdashptshotlog                   |
+| PlayerReboundLogTracking  | playerdashptreboundlogs               |
+| PlayerVsPlayer            | playervsplayer                        |
 
 #### 4. Team (All endpoints mapped)
 | Class Name                |  Endpoint                             |
@@ -73,5 +81,4 @@ Originally based off <https://github.com/bradleyfay/NBAStats>
 #### 1. Documentation
   * All around documentation not only of nba_py but also stats.nba.com (it's pretty nonexistent)
 
-#### 2. Map rest of API
-  * This is gonna be a little tough but I've devised a way to map the rest of the api and hopefully within a couple of weeks most, if not all, of the api will be mapped.
+#### ~~2. Map rest of API~~ (Completed)
