@@ -5,7 +5,6 @@ from nba_py.constants import League
 
 # Constants
 TODAY = datetime.today()
-CURRENT_SEASON = '2015-16'
 BASE_URL = 'http://stats.nba.com/stats/{endpoint}/'
 
 
