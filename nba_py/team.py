@@ -1,4 +1,4 @@
-from nba_py import _api_scrape, _get_json, CURRENT_SEASON
+from nba_py import _api_scrape, _get_json
 from nba_py.constants import *
 
 
@@ -378,7 +378,7 @@ class TeamGameLogs:
                  team_id,
                  season=CURRENT_SEASON,
                  season_type=SeasonType.Default):
-        self.json = _get_json(endpoint=_endpoint,
+        self.json = _get_json(endpoint=self._endpoint,
                               params={'TeamID': team_id,
                                       'Season': season,
                                       'SeasonType': season_type})

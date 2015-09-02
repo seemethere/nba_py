@@ -1,3 +1,5 @@
+CURRENT_SEASON = '2014-15'
+
 TEAMS = {
     'ATL': {
         'abbr': 'ATL',
