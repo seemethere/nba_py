@@ -2,33 +2,25 @@ from nba_py import team
 from nba_py.player import get_player
 from nba_py.constants import TEAMS
 
-# tc = team.TeamSummary(TEAMS['ATL']['id'], season='2013-14')
-# print tc.info()
-
-# td = team.TeamGeneralSplits(TEAMS['CLE']['id'], season='2012-13')
-# print td.overall()
-#
-# tdo = team.TeamOpponentSplits(TEAMS['SAS']['id'], season='2012-13')
-# print tdo.division()
-
-# dash_lineups = team.TeamLineups(
-#     TEAMS['MIL']['id'], "0041400122", season='2014-15')
-# print dash_lineups.overall()
-#
-# players = team.TeamPlayers(TEAMS['MIL']['id'], season='2013-14')
-# print players.overall()
-
-
-# What this will do is get the stats for:
-# Spurs vs Tyson Chandler for the 2010-11 season
-plyr = get_player('Tyson', 'Chandler', just_id=False)
-tvp = team.TeamVsPlayer(team_id=TEAMS['SAS']['id'],
-                        vs_player_id=plyr['PERSON_ID'],
-                        season='2010-11')
-sa_on = tvp.shot_area_on_court()
-rest_on = sa_on[sa_on.GROUP_VALUE == 'Restricted Area']
-sa_off = tvp.shot_area_off_court()
-rest_off = sa_off[sa_off.GROUP_VALUE == 'Restricted Area']
-print 'Spurs stats vs Tyson Chandler (2010-11)'
-print 'On court:  {}'.format(float(rest_on['FG_PCT']))
-print 'Off court: {}'.format(float(rest_off['FG_PCT']))
+def test():
+    team_id = TEAMS['ATL']['id']
+    player_id = get_player('Lebron', 'James')
+    assert team.TeamList()
+    assert team.TeamSummary(team_id)
+    assert team.TeamCommonRoster(team_id)
+    assert team.TeamGeneralSplits(team_id)
+    assert team.TeamOpponentSplits(team_id)
+    assert team.TeamLastNGamesSplits(team_id)
+    assert team.TeamInGameSplits(team_id)
+    assert team.TeamClutchSplits(team_id)
+    assert team.TeamShootingSplits(team_id)
+    assert team.TeamPerformanceSplits(team_id)
+    assert team.TeamLineups(team_id)
+    assert team.TeamPlayers(team_id)
+    assert team.TeamPlayerOnOffDetail(team_id)
+    assert team.TeamPlayerOnOffSummary(team_id)
+    assert team.TeamGameLogs(team_id)
+    assert team.TeamShotTracking(team_id)
+    assert team.TeamReboundTracking(team_id)
+    assert team.TeamPassTracking(team_id)
+    assert team.TeamVsPlayer(team_id, player_id)
