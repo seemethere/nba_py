@@ -1,21 +1,61 @@
-from nba_py import _api_scrape, _get_json
+from nba_py import _api_scrape, _get_json, HAS_PANDAS
 from nba_py.constants import *
+
+
+class PlayerNotFoundException(Exception):
+    pass
 
 
 def get_player(first_name,
                last_name,
-               season=CURRENT_SEASON,
+               season = CURRENT_SEASON,
                only_current=0,
                just_id=True):
+    """ Retrieves a player id, or if prompted full player info
+    Calls our PlayerList class to get a full list of players and then returns
+    just an id if specified or the full row of player information
+
+    Args:
+        first_name: First name of the player
+        last_name: Last name of the player
+        only_current: Only wants the current list of players
+        just_id: Only wants the id of the player
+
+    Returns:
+        Either the ID or full row of information of the player inputted
+
+    Raises:
+        PlayerNotFoundException: Player wasn't found in the PlayerList specified
+    """
     name = '{}, {}'.format(last_name, first_name).lower()
     pl = PlayerList(season=season, only_current=only_current).info()
-    if just_id:
-        return pl[pl.DISPLAY_LAST_COMMA_FIRST.str.lower() == name]['PERSON_ID']
+    hdr = 'DISPLAY_LAST_COMMA_FIRST'
+    if HAS_PANDAS:
+        item = pl[pl.DISPLAY_LAST_COMMA_FIRST.str.lower() == name]
     else:
-        return pl[pl.DISPLAY_LAST_COMMA_FIRST.str.lower() == name]
+        item = (plyr for plyr in pl if str(plyr[hdr]).lower() == name).next()
+    if len(item) == 0:
+        raise PlayerNotFoundException
+    elif just_id:
+        return item['PERSON_ID']
+    else:
+        return item
 
 
 class PlayerList:
+    """ A list of all players
+    Contains a list of all players for a season, if specified, and will only
+    contain current players if specified as well
+
+    Args:
+        league_id: ID for the league to look in (Default is 00)
+        season: Season given to look up
+        only_current: Specifies whether or not to restrict lookup to only current
+                      players
+
+    Attributes:
+        json: Contains the full json dump to play around with
+    """
     _endpoint = 'commonallplayers'
 
     def __init__(self,
@@ -32,6 +72,15 @@ class PlayerList:
 
 
 class PlayerSummary:
+    """ Common player information
+    Contains common player information like headline stats, weight, height, etc.
+
+    Args:
+        player_id: ID of the player to look up
+
+    Attributes:
+        json: Contains the full json dump to play around with
+    """
     _endpoint = 'commonplayerinfo'
 
     def __init__(self,
@@ -493,4 +542,3 @@ class PlayerVsPlayer:
 
     def vs_player_info(self):
         return _api_scrape(self.json, 9)
-    

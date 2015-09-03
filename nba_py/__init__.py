@@ -1,7 +1,12 @@
 from requests import get
-from pandas import DataFrame
 from datetime import datetime
 from nba_py.constants import League
+
+HAS_PANDAS = True
+try:
+    from pandas import DataFrame
+except ImportError:
+    HAS_PANDAS = False
 
 # Constants
 TODAY = datetime.today()
@@ -17,11 +22,18 @@ def _api_scrape(json_inp, ndx):
         ndx (int): index where the data is located in the api
 
     Returns:
-        DataFrame (pandas.DataFrame): data set from ndx within the API's json
+        If pandas is present:
+            DataFrame (pandas.DataFrame): data set from ndx within the API's json
+        else:
+            A dictionary of both headers and values from the page
     """
-    return DataFrame(json_inp['resultSets'][ndx]['rowSet'],
-                     columns=json_inp['resultSets'][ndx]['headers'])
-
+    headers = json_inp['resultSets'][ndx]['headers']
+    values = json_inp['resultSets'][ndx]['rowSet']
+    if HAS_PANDAS:
+        return DataFrame(values, columns=headers)
+    else:
+        # Taken from www.github.com/bradleyfay/py-goldsberry
+        return [dict(zip(headers, value)) for value in values]
 
 def _get_json(endpoint, params):
     """
