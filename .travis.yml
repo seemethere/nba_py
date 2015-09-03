@@ -1,9 +1,10 @@
 language: python
 rvm:
     - "2.7"
-    
+
 install:
     - "pip install ."
+    - "pip install pytest pytest-cov"
 
 script:
-    nosetests
+    py.test --cov=nba_py tests/
