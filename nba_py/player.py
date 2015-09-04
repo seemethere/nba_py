@@ -8,7 +8,7 @@ class PlayerNotFoundException(Exception):
 
 def get_player(first_name,
                last_name,
-               season = CURRENT_SEASON,
+               season=CURRENT_SEASON,
                only_current=0,
                just_id=True):
     """ Retrieves a player id, or if prompted full player info
@@ -25,7 +25,8 @@ def get_player(first_name,
         Either the ID or full row of information of the player inputted
 
     Raises:
-        PlayerNotFoundException: Player wasn't found in the PlayerList specified
+        PlayerNotFoundException: Player wasn't found in the PlayerList
+                                 specified
     """
     name = '{}, {}'.format(last_name, first_name).lower()
     pl = PlayerList(season=season, only_current=only_current).info()
@@ -50,8 +51,8 @@ class PlayerList:
     Args:
         league_id: ID for the league to look in (Default is 00)
         season: Season given to look up
-        only_current: Specifies whether or not to restrict lookup to only current
-                      players
+        only_current: Specifies whether or not to restrict lookup to only
+                      current players
 
     Attributes:
         json: Contains the full json dump to play around with
@@ -73,7 +74,7 @@ class PlayerList:
 
 class PlayerSummary:
     """ Common player information
-    Contains common player information like headline stats, weight, height, etc.
+    Contains common player information like headline stats, weight, etc.
 
     Args:
         player_id: ID of the player to look up
@@ -96,6 +97,38 @@ class PlayerSummary:
 
 
 class _PlayerDashboard:
+    """ Internal class type, is the basis for a lot of classes
+    Has all the basic arguments for all of the Player Dashboard type objects
+
+    Args:
+        player_id: ID of the player to look up
+        team_id: ID of the team to look up
+        measure_type: Specifies type of measure to use (Base, Advanced, etc.)
+        per_mode: Mode to measure statistics (Totals, PerGame, Per36, etc.)
+        plus_minus: Whether or not to consider plus minus (Y or N)
+        pace_adjust: Whether or not to pace adjust stats (Y or N)
+        rank: Whether or not to consider rank (Y or N)
+        league_id: ID for the league to look in (Default is 00)
+        season: Season given to look up
+        season_type: Season type to consider (Regular / Playoffs)
+        po_round: Playoff round
+        outcome: Filter out by wins or losses
+        location: Filter out by home or away
+        month: Specify month to filter by
+        season_segment: Filter by pre/post all star break
+        date_from: Filter out games before a specific date
+        date_to: Filter out games after a specific date
+        opponent_team_id: Opponent team ID to look up
+        vs_conference: Filter by conference
+        vs_division: Filter by division
+        game_segment: Filter by half / overtime
+        period: Filter by quarter / specific overtime
+        shot_clock_range: Filter statistics by range in shot clock
+        last_n_games: Filter by number of games specified in N
+
+    Attributes:
+        json: Contains the full json dump to play around with
+    """
     _endpoint = ''
 
     def __init__(self,
@@ -154,6 +187,10 @@ class _PlayerDashboard:
 
 
 class PlayerGeneralSplits(_PlayerDashboard):
+    """ General player stats, more in depth than stats found in PlayerSummary
+    Contains stats pertaining to location, wins and losses, pre/post all star
+    break, starting position, and numbers of days rest
+    """
     _endpoint = 'playerdashboardbygeneralsplits'
 
     def location(self):
