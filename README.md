@@ -1,3 +1,5 @@
+
+[![PyPI](https://img.shields.io/pypi/v/nba_py.svg?style=flat-square)](https://pypi.python.org/pypi/nba_py) [![Travis](https://img.shields.io/travis/seemethere/nba_py.svg?style=flat-square)](https://travis-ci.org/seemethere/nba_py.svg?branch=master)    [![PyPI](https://img.shields.io/pypi/l/nba_py.svg?style=flat-square)](https://github.com/seemethere/nba_py/blob/master/LICENSE)
 # *nba_py - [stats.nba.com](http://stats.nba.com) API for python*
 
 ## Summary
@@ -5,13 +7,12 @@ A python facing API for stats.nba.com (Still in heavy development)
 
 Originally based off <https://github.com/bradleyfay/NBAStats>
 
->Current Version = 0.1a2
-[![Build Status](https://travis-ci.org/seemethere/nba_py.svg?branch=master)](https://travis-ci.org/seemethere/nba_py)
+
 
 ## Installation
     $ pip install nba_py
 
-## Requirements [![Requirements Status](https://requires.io/github/seemethere/nba_py/requirements.svg?branch=master)](https://requires.io/github/seemethere/nba_py/requirements/?branch=master)
+## Requirements [![Requires.io](https://img.shields.io/requires/github/seemethere/nba_py.svg?style=flat-square)](https://requires.io/github/seemethere/nba_py/requirements/?branch=master)
   * [requests](http://www.python-requests.org/en/latest/)
 
 ## Nice to have
