@@ -210,6 +210,10 @@ class PlayerGeneralSplits(_PlayerDashboard):
 
 
 class PlayerOpponentSplits(_PlayerDashboard):
+    """ Player stats per opponent
+    Contains stats pertaining to player stats vs certain opponents by division,
+    conference, and by specific team opponent
+    """
     _endpoint = 'playerdashboardbyopponent'
 
     def by_conference(self):
@@ -223,6 +227,10 @@ class PlayerOpponentSplits(_PlayerDashboard):
 
 
 class PlayerLastNGamesSplits(_PlayerDashboard):
+    """ Player stats per last n games
+    Contains players stats per last 5, 10, 15, and 20 games, or specified
+    number of games.
+    """
     _endpoint = 'playerdashboardbylastngames'
 
     def last5(self):
@@ -242,6 +250,10 @@ class PlayerLastNGamesSplits(_PlayerDashboard):
 
 
 class PlayerInGameSplits(_PlayerDashboard):
+    """ Player in-game stats
+    Contains player stats by half, by quarter, by score margin, and by actual
+    margins.
+    """
     _endpoint = 'playerdashboardbygamesplits'
 
     def by_half(self):
@@ -258,6 +270,9 @@ class PlayerInGameSplits(_PlayerDashboard):
 
 
 class PlayerClutchSplits(_PlayerDashboard):
+    """ Player clutch stats
+    Contains a lot of methods for last n minutes with a deficit of x points
+    """
     _endpoint = 'playerdashboardbyclutch'
 
     def last5min_deficit_5point(self):
@@ -316,6 +331,10 @@ class PlayerClutchSplits(_PlayerDashboard):
 
 
 class PlayerShootingSplits(_PlayerDashboard):
+    """ In-depth player shoooting stats
+    Shooting stats based on distance, area, assisted to, shot types, and
+    assisted by.
+    """
     _endpoint = 'playerdashboardbyshootingsplits'
 
     def shot_5ft(self):
@@ -341,6 +360,10 @@ class PlayerShootingSplits(_PlayerDashboard):
 
 
 class PlayerPerformanceSplits(_PlayerDashboard):
+    """ Player stats by different performance metrics
+    Player stats by different performance metrics such as score differntial,
+    points scored, and points scored against
+    """
     _endpoint = 'playerdashboardbyteamperformance'
 
     def score_differential(self):
@@ -354,6 +377,10 @@ class PlayerPerformanceSplits(_PlayerDashboard):
 
 
 class PlayerYearOverYearSplits(_PlayerDashboard):
+    """ Player stats year by year
+    Displays player stats over the given season and over all seasons in the
+    given league
+    """
     _endpoint = 'playerdashboardbyyearoveryear'
 
     def by_year(self):
@@ -361,6 +388,19 @@ class PlayerYearOverYearSplits(_PlayerDashboard):
 
 
 class PlayerCareer:
+    """ Player career stats with different metrics
+    Contains stats based on several parameters such as career regular season
+    totals, post season career totals, all star season careers totals, college
+    season career totals, etc.
+
+    Args:
+        player_id: Player ID to look up
+        per_mode: Mode to measure statistics (Totals, PerGame, Per36, etc.)
+        league_id: ID for the league to look in (Default is 00)
+
+    Attributes:
+        json: Contains the full json dump to play around with
+    """
     _endpoint = 'playercareerstats'
 
     def __init__(self,
@@ -393,7 +433,7 @@ class PlayerCareer:
     def college_season_totals(self):
         return _api_scrape(self.json, 6)
 
-    def career_college_season_totals(self):
+    def college_season_career_totals(self):
         return _api_scrape(self.json, 7)
 
     def regular_season_rankings(self):
@@ -404,6 +444,10 @@ class PlayerCareer:
 
 
 class PlayerProfile(PlayerCareer):
+    """ Full player profile of stats
+    Contains a more in depth version of player career stats with season highs,
+    career highs, and when the player's next game is
+    """
     _endpoint = 'playerprofilev2'
 
     def season_highs(self):
@@ -417,6 +461,18 @@ class PlayerProfile(PlayerCareer):
 
 
 class PlayerGameLogs:
+    """ Game logs for each of the player's games for a given season
+    Contains a full log of all the games for a player for a given season
+
+    Args:
+        player_id: ID of the player to look up
+        league_id: ID for the league to look in (Default is 00)
+        season: Season given to look up
+        season_type: Season type to consider (Regular / Playoffs)
+
+    Attributes:
+        json: Contains the full json dump to play around with
+    """
     _endpoint = 'playergamelog'
 
     def __init__(self,
@@ -435,6 +491,9 @@ class PlayerGameLogs:
 
 
 class PlayerShotTracking(_PlayerDashboard):
+    """ Player tracking data for shooting
+    Tracking data for shooting for a given player
+    """
     _endpoint = 'playerdashptshots'
 
     def general_shooting(self):
@@ -457,6 +516,9 @@ class PlayerShotTracking(_PlayerDashboard):
 
 
 class PlayerReboundTracking(_PlayerDashboard):
+    """ Player tracking data for rebounding
+    Tracking data for rebounding for a given player
+    """
     _endpoint = 'playerdashptreb'
 
     def shot_type_rebounding(self):
@@ -473,6 +535,9 @@ class PlayerReboundTracking(_PlayerDashboard):
 
 
 class PlayerPassTracking(_PlayerDashboard):
+    """ Player tracking data for passing
+    Tracking data for passing for a given player
+    """
     _endpoint = 'playerdashptpass'
 
     def passes_made(self):
@@ -483,18 +548,60 @@ class PlayerPassTracking(_PlayerDashboard):
 
 
 class PlayerDefenseTracking(_PlayerDashboard):
+    """ Player tracking data for defense
+    Tracking data for defense for a given player
+    """
     _endpoint = 'playerdashptshotdefend'
 
 
 class PlayerShotLogTracking(_PlayerDashboard):
+    """ Log of every shot a player has taken for a given season
+    Contains a log for every shot for a given season for a given player
+    """
     _endpoint = 'playerdashptshotlog'
 
 
 class PlayerReboundLogTracking(_PlayerDashboard):
+    """ Log of every rebound a player has taken for a given season
+    Contains a log for every rebound for a given season for a given player
+    """
     _endpoint = 'playerdashptreboundlogs'
 
 
 class PlayerVsPlayer:
+    """ A player vs player analysis containing general stats
+    Contains general stats that pertain to players going against other players
+
+    Args:
+        player_id: ID of the player to look up
+        vs_player_id: ID of the vs player to look up
+        team_id: ID of the team to look up
+        measure_type: Specifies type of measure to use (Base, Advanced, etc.)
+        per_mode: Mode to measure statistics (Totals, PerGame, Per36, etc.)
+        plus_minus: Whether or not to consider plus minus (Y or N)
+        pace_adjust: Whether or not to pace adjust stats (Y or N)
+        rank: Whether or not to consider rank (Y or N)
+        league_id: ID for the league to look in (Default is 00)
+        season: Season given to look up
+        season_type: Season type to consider (Regular / Playoffs)
+        po_round: Playoff round
+        outcome: Filter out by wins or losses
+        location: Filter out by home or away
+        month: Specify month to filter by
+        season_segment: Filter by pre/post all star break
+        date_from: Filter out games before a specific date
+        date_to: Filter out games after a specific date
+        opponent_team_id: Opponent team ID to look up
+        vs_conference: Filter by conference
+        vs_division: Filter by division
+        game_segment: Filter by half / overtime
+        period: Filter by quarter / specific overtime
+        shot_clock_range: Filter statistics by range in shot clock
+        last_n_games: Filter by number of games specified in N
+
+    Attributes:
+        json: Contains the full json dump to play around with
+    """
     _endpoint = 'playervsplayer'
 
     def __init__(self,
