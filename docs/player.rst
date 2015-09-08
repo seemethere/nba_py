@@ -1,10 +1,7 @@
 
 :mod:`nba_py.player` -- Player package
 ======================================
-
-:mod:`nba_py.player.PlayerCareer`
-
-.. autoclass:: nba_py.player.PlayerCareer
+.. automodule:: nba_py.player
     :members:
     :undoc-members:
     :show-inheritance:
