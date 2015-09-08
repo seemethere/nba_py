@@ -467,7 +467,7 @@ class GameSegment(_DefaultBlank):
 
 class ShotClockRange(_DefaultBlank):
     AllRanges = ''
-    # I honestly don't know anytime the shot clok would be off
+    # I honestly don't know anytime the shot clock would be off
     ShotClockOff = 'ShotClock Off'
 
     def get(self, n):
