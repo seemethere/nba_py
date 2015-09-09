@@ -2,12 +2,16 @@
 [![Join the chat at https://gitter.im/seemethere/nba_py](https://badges.gitter.im/Join%20Chat.svg)](https://gitter.im/seemethere/nba_py?utm_source=badge&utm_medium=badge&utm_campaign=pr-badge&utm_content=badge)
 
 # *nba_py - [stats.nba.com](http://stats.nba.com) API for python*
+
+#### [stats.nba.com Endpoint Documentation](https://github.com/seemethere/nba_py/wiki/stats.nba.com-Endpoint-Documentation)
+
 Stable version: **v0.1a1**
 
 This branches version: **v0.1a2**
 
 ## Summary
 A python facing API for stats.nba.com (Still in heavy development)
+
 
 Originally based off [https://github.com/bradleyfay/NBAStats](https://github.com/bradleyfay/NBAStats)
 
