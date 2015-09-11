@@ -23,7 +23,8 @@ def _api_scrape(json_inp, ndx):
 
     Returns:
         If pandas is present:
-            DataFrame (pandas.DataFrame): data set from ndx within the API's json
+            DataFrame (pandas.DataFrame): data set from ndx within the
+            API's json
         else:
             A dictionary of both headers and values from the page
     """
@@ -34,6 +35,7 @@ def _api_scrape(json_inp, ndx):
     else:
         # Taken from www.github.com/bradleyfay/py-goldsberry
         return [dict(zip(headers, value)) for value in values]
+
 
 def _get_json(endpoint, params):
     """
@@ -57,8 +59,18 @@ def _get_json(endpoint, params):
 
 class Scoreboard:
     _endpoint = 'scoreboard'
-    """
+    """ A scoreboard for all games for a given day
     Displays current games plus info for a given day
+
+    Args:
+        month: Specified month (1-12)
+        day: Specified day (1-31)
+        year: Specified year (YYYY)
+        league_id: ID for the league to look in (Default is 00)
+        offset: Day offset from which to operate
+
+    Attributes:
+        json: Contains the full json dump to play around with
     """
 
     def __init__(self,
