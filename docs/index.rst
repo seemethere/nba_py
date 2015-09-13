@@ -11,8 +11,11 @@ Contents:
 .. toctree::
    :maxdepth: 2
 
-   intro
-   tutorial
+   nba_py
+   player
+   game
+   team
+   constants
 
 Indices and tables
 ==================
