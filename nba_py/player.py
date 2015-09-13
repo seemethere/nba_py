@@ -624,12 +624,12 @@ class PlayerCareer:
     season career totals, etc.
 
     Args:
-        player_id: Player ID to look up
-        per_mode: Mode to measure statistics (Totals, PerGame, Per36, etc.)
-        league_id: ID for the league to look in (Default is 00)
+        :player_id: Player ID to look up
+        :per_mode: Mode to measure statistics (Totals, PerGame, Per36, etc.)
+        :league_id: ID for the league to look in (Default is 00)
 
     Attributes:
-        json: Contains the full json dump to play around with
+        :json: Contains the full json dump to play around with
     """
     _endpoint = 'playercareerstats'
 
@@ -679,12 +679,12 @@ class PlayerProfile(PlayerCareer):
     career highs, and when the player's next game is
 
     Args:
-        player_id: Player ID to look up
-        per_mode: Mode to measure statistics (Totals, PerGame, Per36, etc.)
-        league_id: ID for the league to look in (Default is 00)
+        :player_id: Player ID to look up
+        :per_mode: Mode to measure statistics (Totals, PerGame, Per36, etc.)
+        :league_id: ID for the league to look in (Default is 00)
 
     Attributes:
-        json: Contains the full json dump to play around with
+        :json: Contains the full json dump to play around with
     """
     _endpoint = 'playerprofilev2'
 
@@ -703,13 +703,13 @@ class PlayerGameLogs:
     Contains a full log of all the games for a player for a given season
 
     Args:
-        player_id: ID of the player to look up
-        league_id: ID for the league to look in (Default is 00)
-        season: Season given to look up
-        season_type: Season type to consider (Regular / Playoffs)
+        :player_id: ID of the player to look up
+        :league_id: ID for the league to look in (Default is 00)
+        :season: Season given to look up
+        :season_type: Season type to consider (Regular / Playoffs)
 
     Attributes:
-        json: Contains the full json dump to play around with
+        :json: Contains the full json dump to play around with
     """
     _endpoint = 'playergamelog'
 
