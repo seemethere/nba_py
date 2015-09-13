@@ -58,20 +58,20 @@ def _get_json(endpoint, params):
 
 
 class Scoreboard:
-    _endpoint = 'scoreboard'
     """ A scoreboard for all games for a given day
     Displays current games plus info for a given day
 
     Args:
-        month: Specified month (1-12)
-        day: Specified day (1-31)
-        year: Specified year (YYYY)
-        league_id: ID for the league to look in (Default is 00)
-        offset: Day offset from which to operate
+        :month: Specified month (1-12)
+        :day: Specified day (1-31)
+        :year: Specified year (YYYY)
+        :league_id: ID for the league to look in (Default is 00)
+        :offset: Day offset from which to operate
 
     Attributes:
-        json: Contains the full json dump to play around with
+        :json: Contains the full json dump to play around with
     """
+    _endpoint = 'scoreboard'
 
     def __init__(self,
                  month=TODAY.month,
