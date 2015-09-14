@@ -1,5 +1,5 @@
 language: python
-rvm:
+python:
     - "2.7"
     - "3.5"
 
