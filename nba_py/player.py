@@ -33,7 +33,7 @@ def get_player(first_name,
     if HAS_PANDAS:
         item = pl[pl.DISPLAY_LAST_COMMA_FIRST.str.lower() == name]
     else:
-        item = (plyr for plyr in pl if str(plyr[hdr]).lower() == name).next()
+        item = next(plyr for plyr in pl if str(plyr[hdr]).lower() == name)
     if len(item) == 0:
         raise PlayerNotFoundException
     elif just_id:
