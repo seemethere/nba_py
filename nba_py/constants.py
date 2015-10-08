@@ -560,3 +560,55 @@ class StartPeriod(Period):
 
 class EndPeriod(Period):
     pass
+
+
+class StatCategory:
+    PTS = 'PTS'
+    FGM = 'FGM'
+    FGA = 'FGA'
+    FG_PCT = 'FG%'
+    FG3M = '3PM'
+    FG3A = '3PA'
+    FG3_PCT = '3P%'
+    FTM = 'FTM'
+    FTA = 'FTA'
+    FT_PCT = 'FT%'
+    OREB = 'OREB'
+    DREB = 'DREB'
+    REB = 'REB'
+    AST = 'AST'
+    STL = 'STL'
+    BLK = 'BLK'
+    TOV = 'TOV'
+    EFF = 'EFF'
+    AST_TOV = 'AST/TO'
+    STL_TOV = 'STL/TOV'
+    PF = 'PF'
+    Default = PTS
+
+
+class Scope:
+    AllPlayers = 'S'
+    Rookies = 'Rookies'
+    Default = AllPlayers
+
+
+class PlayerScope:
+    # ugh this is so similar to Scope, why does it have its own
+    AllPlayers = 'All Players'
+    Rookies = 'Rookie'
+    Default = AllPlayers
+
+
+class PlayerOrTeam:
+    Player = 'Player'
+    Team = 'Team'
+    Default = Player
+
+
+class GameScope:
+    Season = 'Season'
+    Last10 = 'Last 10'
+    Yesterday = 'Yesterday'
+    Finals = 'Finals'
+    Default = Season
