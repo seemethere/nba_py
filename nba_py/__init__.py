@@ -28,8 +28,19 @@ def _api_scrape(json_inp, ndx):
         else:
             A dictionary of both headers and values from the page
     """
-    headers = json_inp['resultSets'][ndx]['headers']
-    values = json_inp['resultSets'][ndx]['rowSet']
+    try:
+        headers = json_inp['resultSets'][ndx]['headers']
+        values = json_inp['resultSets'][ndx]['rowSet']
+    except KeyError:
+        # This is so ugly but this is what you get when your data comes out
+        # in not a standard format
+        try:
+            headers = json_inp['resultSet'][ndx]['headers']
+            values = json_inp['resultSet'][ndx]['rowSet']
+        except KeyError:
+            # Added for results that only include one set (ex. LeagueLeaders)
+            headers = json_inp['resultSet']['headers']
+            values = json_inp['resultSet']['rowSet']
     if HAS_PANDAS:
         return DataFrame(values, columns=headers)
     else:
@@ -52,7 +63,7 @@ def _get_json(endpoint, params):
         json (json): json object for selected API call
     """
     _get = get(BASE_URL.format(endpoint=endpoint), params=params)
-    # print _get.url
+    print (_get.url)
     _get.raise_for_status()
     return _get.json()
 
