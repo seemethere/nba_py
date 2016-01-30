@@ -6,7 +6,7 @@ from nba_py.constants import League
 # Constants
 TODAY = datetime.today()
 BASE_URL = 'http://stats.nba.com/stats/{endpoint}/'
-
+HEADER = {'User-Agent' : 'Mozilla/5.0'}
 
 def _api_scrape(json_inp, ndx):
     """
@@ -37,7 +37,7 @@ def _get_json(endpoint, params):
     Returns:
         json (json): json object for selected API call
     """
-    _get = get(BASE_URL.format(endpoint=endpoint), params=params)
+    _get = get(BASE_URL.format(endpoint=endpoint), params=params, headers=HEADER)
     # print _get.url
     _get.raise_for_status()
     return _get.json()
