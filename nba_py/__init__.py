@@ -11,6 +11,9 @@ except ImportError:
 # Constants
 TODAY = datetime.today()
 BASE_URL = 'http://stats.nba.com/stats/{endpoint}/'
+HEADERS = {'user-agent': ('Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_5) '
+                          'AppleWebKit/537.36 (KHTML, like Gecko) '
+                          'Chrome/45.0.2454.101 Safari/537.36')}
 
 
 def _api_scrape(json_inp, ndx):
@@ -28,6 +31,7 @@ def _api_scrape(json_inp, ndx):
         else:
             A dictionary of both headers and values from the page
     """
+
     try:
         headers = json_inp['resultSets'][ndx]['headers']
         values = json_inp['resultSets'][ndx]['rowSet']
@@ -62,8 +66,9 @@ def _get_json(endpoint, params):
     Returns:
         json (json): json object for selected API call
     """
-    _get = get(BASE_URL.format(endpoint=endpoint), params=params)
-    print (_get.url)
+    _get = get(BASE_URL.format(endpoint=endpoint), params=params,
+               headers=HEADERS)
+    # print _get.url
     _get.raise_for_status()
     return _get.json()
 

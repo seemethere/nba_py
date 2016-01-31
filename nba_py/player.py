@@ -186,6 +186,9 @@ class _PlayerDashboard:
 
 class PlayerGeneralSplits(_PlayerDashboard):
     """
+
+    UNFORTUNATELY MARKED AS FORBIDDEN BY THE NBA
+
     Contains stats pertaining to location, wins and losses, pre/post all star
     break, starting position, and numbers of days rest
 
@@ -238,6 +241,9 @@ class PlayerGeneralSplits(_PlayerDashboard):
 
 class PlayerOpponentSplits(_PlayerDashboard):
     """
+
+    UNFORTUNATELY MARKED AS FORBIDDEN BY THE NBA
+
     Contains stats pertaining to player stats vs certain opponents by division,
     conference, and by specific team opponent
 
@@ -475,6 +481,9 @@ class PlayerClutchSplits(_PlayerDashboard):
 
 class PlayerShootingSplits(_PlayerDashboard):
     """
+
+    UNFORTUNATELY MARKED AS FORBIDDEN BY THE NBA
+
     Shooting stats based on distance, area, assisted to, shot types, and
     assisted by.
 
@@ -730,6 +739,9 @@ class PlayerGameLogs:
 
 class PlayerShotTracking(_PlayerDashboard):
     """
+
+    UNFORTUNATELY MARKED AS FORBIDDEN BY THE NBA
+
     Tracking data for shooting for a given player
 
     Args:
@@ -784,6 +796,9 @@ class PlayerShotTracking(_PlayerDashboard):
 
 class PlayerReboundTracking(_PlayerDashboard):
     """
+
+    UNFORTUNATELY MARKED AS FORBIDDEN BY THE NBA
+
     Tracking data for rebounding for a given player
 
     Args:
