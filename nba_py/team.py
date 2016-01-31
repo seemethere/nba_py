@@ -384,7 +384,7 @@ class TeamGameLogs:
                                       'SeasonType': season_type})
 
     def info(self):
-        return _api_scrape(self.json, 1)
+        return _api_scrape(self.json, 0)
 
 
 class TeamSeasons:
@@ -392,15 +392,17 @@ class TeamSeasons:
 
     def __init__(self,
                  team_id,
+                 league_id=League.NBA,
                  season_type=SeasonType.Default,
                  per_mode=PerMode.Default):
-        self.json = _get_json(endpoint=_endpoint,
+        self.json = _get_json(endpoint=self._endpoint,
                               params={'TeamID': team_id,
+                                      'LeagueID': league_id,
                                       'SeasonType': season_type,
                                       'PerMode': per_mode})
 
     def info(self):
-        return _api_scrape(self.json, 1)
+        return _api_scrape(self.json, 0)
 
 
 class TeamShotTracking(_TeamDashboard):
