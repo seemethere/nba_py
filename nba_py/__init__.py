@@ -1,12 +1,19 @@
 from requests import get
-from pandas import DataFrame
 from datetime import datetime
 from nba_py.constants import League
+
+HAS_PANDAS = True
+try:
+    from pandas import DataFrame
+except ImportError:
+    HAS_PANDAS = False
 
 # Constants
 TODAY = datetime.today()
 BASE_URL = 'http://stats.nba.com/stats/{endpoint}/'
-HEADER = {'User-Agent' : 'Mozilla/5.0'}
+HEADERS = {'user-agent': ('Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_5) '
+                          'AppleWebKit/537.36 (KHTML, like Gecko) '
+                          'Chrome/45.0.2454.101 Safari/537.36')}
 
 def _api_scrape(json_inp, ndx):
     """
@@ -17,10 +24,31 @@ def _api_scrape(json_inp, ndx):
         ndx (int): index where the data is located in the api
 
     Returns:
-        DataFrame (pandas.DataFrame): data set from ndx within the API's json
+        If pandas is present:
+            DataFrame (pandas.DataFrame): data set from ndx within the
+            API's json
+        else:
+            A dictionary of both headers and values from the page
     """
-    return DataFrame(json_inp['resultSets'][ndx]['rowSet'],
-                     columns=json_inp['resultSets'][ndx]['headers'])
+
+    try:
+        headers = json_inp['resultSets'][ndx]['headers']
+        values = json_inp['resultSets'][ndx]['rowSet']
+    except KeyError:
+        # This is so ugly but this is what you get when your data comes out
+        # in not a standard format
+        try:
+            headers = json_inp['resultSet'][ndx]['headers']
+            values = json_inp['resultSet'][ndx]['rowSet']
+        except KeyError:
+            # Added for results that only include one set (ex. LeagueLeaders)
+            headers = json_inp['resultSet']['headers']
+            values = json_inp['resultSet']['rowSet']
+    if HAS_PANDAS:
+        return DataFrame(values, columns=headers)
+    else:
+        # Taken from www.github.com/bradleyfay/py-goldsberry
+        return [dict(zip(headers, value)) for value in values]
 
 
 def _get_json(endpoint, params):
@@ -37,17 +65,28 @@ def _get_json(endpoint, params):
     Returns:
         json (json): json object for selected API call
     """
-    _get = get(BASE_URL.format(endpoint=endpoint), params=params, headers=HEADER)
+    _get = get(BASE_URL.format(endpoint=endpoint), params=params,
+               headers=HEADERS)
     # print _get.url
     _get.raise_for_status()
     return _get.json()
 
 
 class Scoreboard:
-    _endpoint = 'scoreboard'
-    """
+    """ A scoreboard for all games for a given day
     Displays current games plus info for a given day
+
+    Args:
+        :month: Specified month (1-12)
+        :day: Specified day (1-31)
+        :year: Specified year (YYYY)
+        :league_id: ID for the league to look in (Default is 00)
+        :offset: Day offset from which to operate
+
+    Attributes:
+        :json: Contains the full json dump to play around with
     """
+    _endpoint = 'scoreboard'
 
     def __init__(self,
                  month=TODAY.month,
