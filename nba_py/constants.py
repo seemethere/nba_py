@@ -668,3 +668,31 @@ class Weight(_DefaultBlank):
     Example:
     for greater than 225lbs api call should be GT+225lbs
     '''
+    
+class Counter:
+    Default = '1000'
+
+class Sorter:
+    PTS = 'PTS'
+    FGM = 'FGM'
+    FGA = 'FGA'
+    FG_PCT = 'FG_PCT'
+    FG3M = 'FG3M'
+    FG3A = 'FG3A'
+    FG3_PCT = 'FG3_PCT'
+    FTM = 'FTM'
+    FTA = 'FTA'
+    FT_PCT = 'FT_PCT'
+    OREB = 'OREB'
+    DREB = 'DREB'
+    AST = 'AST'
+    STL = 'STL'
+    BLK = 'BLK'
+    TOV = 'TOV'
+    REB = 'REB'
+    Default = PTS
+
+class Direction:
+    DESC = 'DESC'
+    ASC = 'ASC'
+    Default = DESC
