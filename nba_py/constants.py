@@ -606,9 +606,21 @@ class PlayerOrTeam:
     Default = Player
 
 
-class GameScope(_DefaultBlank):
+class GameScope:
+    Season = 'Season'
     Last10 = 'Last 10'
     Yesterday = 'Yesterday'
+    Finals = 'Finals'
+    Default = Season
+
+class Game_Scope(_DefaultBlank):
+    Last10 = 'Last 10'
+    Yesterday = 'Yesterday'
+
+class Player_or_Team:
+    Player = 'P'
+    Team = 'T'
+    Default = Player
 
 class Conference(VsConference):
     pass
@@ -668,7 +680,7 @@ class Weight(_DefaultBlank):
     Example:
     for greater than 225lbs api call should be GT+225lbs
     '''
-    
+
 class Counter:
     Default = '1000'
 
