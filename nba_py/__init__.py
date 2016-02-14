@@ -13,8 +13,9 @@ TODAY = datetime.today()
 BASE_URL = 'http://stats.nba.com/stats/{endpoint}/'
 HEADERS = {'user-agent': ('Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_5) '
                           'AppleWebKit/537.36 (KHTML, like Gecko) '
-                          'Chrome/45.0.2454.101 Safari/537.36')}
-
+                          'Chrome/45.0.2454.101 Safari/537.36'),
+           'referer': 'http://stats.nba.com/scores/'
+          }
 def _api_scrape(json_inp, ndx):
     """
     Internal method to streamline the getting of data from the json
