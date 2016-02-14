@@ -612,3 +612,99 @@ class GameScope:
     Yesterday = 'Yesterday'
     Finals = 'Finals'
     Default = Season
+
+class Game_Scope(_DefaultBlank):
+    Last10 = 'Last 10'
+    Yesterday = 'Yesterday'
+
+class Player_or_Team:
+    Player = 'P'
+    Team = 'T'
+    Default = Player
+
+class Conference(VsConference):
+    pass
+
+class Division(VsDivision):
+    pass
+
+class TeamID(_DefaultZero):
+    pass
+
+class PlayerExperience(_DefaultBlank):
+    Rookie = 'Rookie'
+    Sophomore = 'Sophomore'
+    Veteran = 'Veteran'
+
+class PlayerPosition(_DefaultBlank):
+    Forward = 'F'
+    Center = 'C'
+    Guard = 'G'
+
+class StarterBench(_DefaultBlank):
+    Starters = 'Starters'
+    Bench = 'Bench'
+
+class DraftYear(_DefaultBlank):
+    pass
+
+class DraftPick(_DefaultBlank):
+    FirstRound = '1st+Round'
+    SecondRound = '2nd+Round'
+    FirstPick = '1st+Pick'
+    Lottery = 'Lottery+Pick'
+    Top5 = 'Top+5+Pick'
+    Top10 = 'Top+10+Pick'
+    Top15 = 'Top+15+Pick'
+    Top20 = 'Top+20+Pick'
+    Top25 = 'Top+25+Pick'
+    Picks11Thru20 = 'Picks+11+Thru+20'
+    Picks21Thru30 = 'Picks+21+Thru+30'
+    Undrafted = 'Undrafted'
+
+class College(_DefaultBlank):
+    pass
+
+class Country(_DefaultBlank):
+    pass
+
+class Height(_DefaultBlank):
+    '''
+    Example:
+    for greater than 6ft8 api call should be GT+6-8
+    for lower than 7ft3 api call should be LT+7-3
+    '''
+
+class Weight(_DefaultBlank):
+    '''
+    Example:
+    for greater than 225lbs api call should be GT+225lbs
+    '''
+
+class Counter:
+    Default = '1000'
+
+class Sorter:
+    PTS = 'PTS'
+    FGM = 'FGM'
+    FGA = 'FGA'
+    FG_PCT = 'FG_PCT'
+    FG3M = 'FG3M'
+    FG3A = 'FG3A'
+    FG3_PCT = 'FG3_PCT'
+    FTM = 'FTM'
+    FTA = 'FTA'
+    FT_PCT = 'FT_PCT'
+    OREB = 'OREB'
+    DREB = 'DREB'
+    AST = 'AST'
+    STL = 'STL'
+    BLK = 'BLK'
+    TOV = 'TOV'
+    REB = 'REB'
+    Default = PTS
+
+class Direction:
+    DESC = 'DESC'
+    ASC = 'ASC'
+    Default = DESC
