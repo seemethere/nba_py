@@ -613,40 +613,50 @@ class GameScope:
     Finals = 'Finals'
     Default = Season
 
+
 class Game_Scope(_DefaultBlank):
     Last10 = 'Last 10'
     Yesterday = 'Yesterday'
+
 
 class Player_or_Team:
     Player = 'P'
     Team = 'T'
     Default = Player
 
+
 class Conference(VsConference):
     pass
+
 
 class Division(VsDivision):
     pass
 
+
 class TeamID(_DefaultZero):
     pass
+
 
 class PlayerExperience(_DefaultBlank):
     Rookie = 'Rookie'
     Sophomore = 'Sophomore'
     Veteran = 'Veteran'
 
+
 class PlayerPosition(_DefaultBlank):
     Forward = 'F'
     Center = 'C'
     Guard = 'G'
 
+
 class StarterBench(_DefaultBlank):
     Starters = 'Starters'
     Bench = 'Bench'
 
+
 class DraftYear(_DefaultBlank):
     pass
+
 
 class DraftPick(_DefaultBlank):
     FirstRound = '1st+Round'
@@ -662,11 +672,14 @@ class DraftPick(_DefaultBlank):
     Picks21Thru30 = 'Picks+21+Thru+30'
     Undrafted = 'Undrafted'
 
+
 class College(_DefaultBlank):
     pass
 
+
 class Country(_DefaultBlank):
     pass
+
 
 class Height(_DefaultBlank):
     '''
@@ -675,14 +688,17 @@ class Height(_DefaultBlank):
     for lower than 7ft3 api call should be LT+7-3
     '''
 
+
 class Weight(_DefaultBlank):
     '''
     Example:
     for greater than 225lbs api call should be GT+225lbs
     '''
 
+
 class Counter:
     Default = '1000'
+
 
 class Sorter:
     PTS = 'PTS'
@@ -703,6 +719,7 @@ class Sorter:
     TOV = 'TOV'
     REB = 'REB'
     Default = PTS
+
 
 class Direction:
     DESC = 'DESC'
