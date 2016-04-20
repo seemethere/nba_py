@@ -465,6 +465,16 @@ class GameSegment(_DefaultBlank):
     Overtime = 'Overtime'
 
 
+class ClutchTime(_DefaultBlank):
+    Last5Min = 'Last 5 Minutes'
+    Last4Min = 'Last 4 Minutes'
+    Last3Min = 'Last 3 Minutes'
+    Last2Min = 'Last 2 Minutes'
+    Last1Min = 'Last 1 Minutes'
+    Last30Sec = 'Last 30 Seconds'
+    Last10Sec = 'Last 10 Seconds'
+
+
 class ShotClockRange(_DefaultBlank):
     AllRanges = ''
     # I honestly don't know anytime the shot clock would be off
@@ -485,6 +495,12 @@ class ShotClockRange(_DefaultBlank):
             return '7-4 Late'
         elif 0 <= n < 4:
             return '4-0 Very Late'
+
+
+class AheadBehind(_DefaultBlank):
+    AheadOrBehind = 'Ahead or Behind'
+    AheadOrTied = 'Ahead or Tied'
+    BehindOrTied = 'Behind or Tied'
 
 
 class PlusMinus(_DefaultN):
@@ -529,7 +545,7 @@ class PlayoffRound(_DefaultZero):
 class Month(_DefaultZero):
     All = '0'
     October = '1'
-    Novemeber = '2'
+    November = '2'
     December = '3'
     January = '4'
     February = '5'
@@ -587,6 +603,23 @@ class StatCategory:
     Default = PTS
 
 
+class ContextMeasure:
+    # Not sure if this is mapped correctly. Source: https://github.com/bradleyfay/NBAStats
+    FGM = 'FGM'
+    FGA = 'FGA'
+    FG_PCT = 'FG_PCT'
+    FG3M = 'FG3m'
+    FG3A = 'FG3A'
+    FG3_PCT = 'FG3_PCT'
+    PF = 'PF'
+    EFG_PCT = 'EFG_PCT'
+    TS_PCT = 'TS_PCT'
+    PTS_FB = 'PTS_FB'
+    PTS_OFF_TOV = 'PTS_OFF_TOV'
+    PTS_2ND_CHANCE = 'PTS_2ND_CHANCE'
+    Default = FGM
+
+
 class Scope:
     AllPlayers = 'S'
     Rookies = 'Rookies'
@@ -634,6 +667,14 @@ class Division(VsDivision):
 
 
 class TeamID(_DefaultZero):
+    pass
+
+
+class GameID(_DefaultBlank):
+    pass
+
+
+class RookieYear(_DefaultBlank):
     pass
 
 
