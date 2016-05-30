@@ -413,6 +413,8 @@ class MeasureType:
     Usage = 'Usage'
     Default = Base
 
+class PtMeasureType:
+    SpeedDistance = 'SpeedDistance'
 
 class GroupQuantity:
     Default = 5
