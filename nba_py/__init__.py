@@ -1,5 +1,5 @@
 from requests import get
-from datetime import datetime
+from datetime import datetime, timedelta
 from nba_py.constants import League
 
 HAS_PANDAS = True
@@ -7,6 +7,12 @@ try:
     from pandas import DataFrame
 except ImportError:
     HAS_PANDAS = False
+
+try:
+    from requests_cache import install_cache
+    install_cache(cache_name='nba_cache', expire_after=timedelta(minutes=10))
+except ImportError:
+    pass
 
 # Constants
 TODAY = datetime.today()
