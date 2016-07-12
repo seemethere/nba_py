@@ -10,9 +10,10 @@ class TestSummary:
 
     def setup(self):
         self.player_name = 'Devin Booker'
+        self.season = '2015-16'
 
     def test_overall(self):
-        results = draftcombine.Summary(season='2015-16')
+        results = draftcombine.Summary(season=self.season)
         assert results
 
         overall = results.overall()
@@ -41,9 +42,10 @@ class TestDrillResults:
 
     def setup(self):
         self.player_name = 'Devin Booker'
+        self.season = '2015-16'
 
     def test_overall(self):
-        results = draftcombine.DrillResults(season='2015-16')
+        results = draftcombine.DrillResults(season=self.season)
         assert results
 
         overall = results.overall()
@@ -57,3 +59,5 @@ class TestDrillResults:
         assert stats['MODIFIED_LANE_AGILITY_TIME'] == 2.75
         assert stats['STANDING_VERTICAL_LEAP'] == 27.5
         assert stats['THREE_QUARTER_SPRINT'] == 3.28
+
+
