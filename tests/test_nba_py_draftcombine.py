@@ -61,3 +61,65 @@ class TestDrillResults:
         assert stats['THREE_QUARTER_SPRINT'] == 3.28
 
 
+class TestSpotShooting:
+
+    def setup(self):
+        self.player_name = 'Devin Booker'
+        self.season = '2015-16'
+
+    def test_overall(self):
+        results = draftcombine.SpotShooting(season=self.season)
+        assert results
+
+        overall = results.overall()
+        assert overall
+
+        stats = next(filter(lambda d: d['PLAYER_NAME'] == self.player_name, overall))
+        assert stats
+
+        assert stats['PLAYER_NAME'] == self.player_name
+        assert stats['COLLEGE_BREAK_LEFT_MADE'] == None
+        assert stats['COLLEGE_BREAK_LEFT_PCT'] == None
+        assert stats['COLLEGE_BREAK_RIGHT_ATTEMPT'] == None
+        assert stats['COLLEGE_BREAK_RIGHT_MADE'] == None
+        assert stats['COLLEGE_BREAK_RIGHT_PCT'] == None
+        assert stats['COLLEGE_CORNER_LEFT_ATTEMPT'] == None
+        assert stats['COLLEGE_CORNER_LEFT_MADE'] == None
+        assert stats['COLLEGE_CORNER_LEFT_PCT'] == None
+        assert stats['COLLEGE_CORNER_RIGHT_ATTEMPT'] == None
+        assert stats['COLLEGE_CORNER_RIGHT_MADE'] == None
+        assert stats['COLLEGE_CORNER_RIGHT_PCT'] == None
+        assert stats['COLLEGE_TOP_KEY_ATTEMPT'] == None
+        assert stats['COLLEGE_TOP_KEY_MADE'] == None
+        assert stats['COLLEGE_TOP_KEY_PCT'] == None
+        assert stats['FIFTEEN_BREAK_LEFT_ATTEMPT'] == None
+        assert stats['FIFTEEN_BREAK_LEFT_MADE'] == None
+        assert stats['FIFTEEN_BREAK_LEFT_PCT'] == None
+        assert stats['FIFTEEN_BREAK_RIGHT_ATTEMPT'] == None
+        assert stats['FIFTEEN_BREAK_RIGHT_MADE'] == None
+        assert stats['FIFTEEN_BREAK_RIGHT_PCT'] == None
+        assert stats['FIFTEEN_CORNER_LEFT_ATTEMPT'] == None
+        assert stats['FIFTEEN_CORNER_LEFT_MADE'] == None
+        assert stats['FIFTEEN_CORNER_LEFT_PCT'] == None
+        assert stats['FIFTEEN_CORNER_RIGHT_ATTEMPT'] == None
+        assert stats['FIFTEEN_CORNER_RIGHT_MADE'] == None
+        assert stats['FIFTEEN_CORNER_RIGHT_PCT'] == None
+        assert stats['FIFTEEN_TOP_KEY_ATTEMPT'] == None
+        assert stats['FIFTEEN_TOP_KEY_MADE'] == None
+        assert stats['FIFTEEN_TOP_KEY_PCT'] == None
+        assert stats['NBA_BREAK_LEFT_ATTEMPT'] == None
+        assert stats['NBA_BREAK_LEFT_MADE'] == None
+        assert stats['NBA_BREAK_LEFT_PCT'] == None
+        assert stats['NBA_BREAK_RIGHT_ATTEMPT'] == None
+        assert stats['NBA_BREAK_RIGHT_MADE'] == None
+        assert stats['NBA_BREAK_RIGHT_PCT'] == None
+        assert stats['NBA_CORNER_LEFT_ATTEMPT'] == None
+        assert stats['NBA_CORNER_LEFT_MADE'] == None
+        assert stats['NBA_CORNER_LEFT_PCT'] == None
+        assert stats['NBA_CORNER_RIGHT_ATTEMPT'] == None
+        assert stats['NBA_CORNER_RIGHT_MADE'] == None
+        assert stats['NBA_CORNER_RIGHT_PCT'] == None
+        assert stats['NBA_TOP_KEY_ATTEMPT'] == None
+        assert stats['NBA_TOP_KEY_MADE'] == None
+        assert stats['NBA_TOP_KEY_PCT'] == None
+        assert stats['PLAYER_ID'] == None

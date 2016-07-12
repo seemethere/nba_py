@@ -24,3 +24,15 @@ class DrillResults:
 
     def overall(self):
         return _api_scrape(self.json, 0)
+
+
+class SpotShooting:
+    _endpoint = 'draftcombinespotshooting'
+
+    def __init__(self, league_id=League.Default, season=CURRENT_SEASON):
+        self.json = _get_json(endpoint=self._endpoint,
+                              params={'LeagueID': league_id,
+                                      'SeasonYear': season})
+
+    def overall(self):
+        return _api_scrape(self.json, 0)
