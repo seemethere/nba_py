@@ -63,6 +63,7 @@ def _api_scrape(json_inp, ndx):
         return [dict(zip(headers, value)) for value in values]
 
 
+def _get_json(endpoint, params, referer='scores'):
     """
     Internal method to streamline our requests / json getting
 
