@@ -1,6 +1,7 @@
 from requests import get
-from datetime import datetime
+from datetime import datetime, timedelta
 from nba_py.constants import League
+import os
 
 HAS_PANDAS = True
 try:
@@ -8,14 +9,25 @@ try:
 except ImportError:
     HAS_PANDAS = False
 
+HAS_REQUESTS_CACHE = True
+CACHE_EXPIRE_MINUTES = int(os.getenv('NBA_PY_CACHE_EXPIRE_MINUTES', 10))
+try:
+    from requests_cache import install_cache
+    install_cache(cache_name='nba_cache',
+                  expire_after=timedelta(minutes=CACHE_EXPIRE_MINUTES))
+except ImportError:
+    HAS_REQUESTS_CACHE = False
+
 # Constants
 TODAY = datetime.today()
-BASE_URL = 'http://stats.nba.com/stats/{endpoint}/'
+BASE_URL = 'http://stats.nba.com/stats/{endpoint}'
 HEADERS = {'user-agent': ('Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_5) '
                           'AppleWebKit/537.36 (KHTML, like Gecko) '
                           'Chrome/45.0.2454.101 Safari/537.36'),
            'referer': 'http://stats.nba.com/scores/'
           }
+
+
 def _api_scrape(json_inp, ndx):
     """
     Internal method to streamline the getting of data from the json

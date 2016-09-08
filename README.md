@@ -38,6 +38,9 @@ $ pip install .
 Pandas is nice to have because it'll put the data in an easy to manage object, but it is by no means necessary. All data, if pandas is not installed is returned in a nice json list format with headers!
 - [pandas](http://pandas.pydata.org/) [(Installation Help)](https://github.com/seemethere/nba_py/wiki/Installing-pandas)
 
+Requests-cache is nice to have when you are downloading very large datasets so that subsequent downloads take much less time, but again, it is by no means necessary.
+- [requests-cache](https://github.com/reclosedev/requests-cache)
+
 ## Completed work
 - See the [wiki](https://github.com/seemethere/nba_py/wiki/Completed-Work-Log)
 

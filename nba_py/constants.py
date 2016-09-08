@@ -413,6 +413,8 @@ class MeasureType:
     Usage = 'Usage'
     Default = Base
 
+class PtMeasureType:
+    SpeedDistance = 'SpeedDistance'
 
 class GroupQuantity:
     Default = 5
@@ -465,6 +467,16 @@ class GameSegment(_DefaultBlank):
     Overtime = 'Overtime'
 
 
+class ClutchTime(_DefaultBlank):
+    Last5Min = 'Last 5 Minutes'
+    Last4Min = 'Last 4 Minutes'
+    Last3Min = 'Last 3 Minutes'
+    Last2Min = 'Last 2 Minutes'
+    Last1Min = 'Last 1 Minutes'
+    Last30Sec = 'Last 30 Seconds'
+    Last10Sec = 'Last 10 Seconds'
+
+
 class ShotClockRange(_DefaultBlank):
     AllRanges = ''
     # I honestly don't know anytime the shot clock would be off
@@ -485,6 +497,12 @@ class ShotClockRange(_DefaultBlank):
             return '7-4 Late'
         elif 0 <= n < 4:
             return '4-0 Very Late'
+
+
+class AheadBehind(_DefaultBlank):
+    AheadOrBehind = 'Ahead or Behind'
+    AheadOrTied = 'Ahead or Tied'
+    BehindOrTied = 'Behind or Tied'
 
 
 class PlusMinus(_DefaultN):
@@ -529,7 +547,7 @@ class PlayoffRound(_DefaultZero):
 class Month(_DefaultZero):
     All = '0'
     October = '1'
-    Novemeber = '2'
+    November = '2'
     December = '3'
     January = '4'
     February = '5'
@@ -587,6 +605,23 @@ class StatCategory:
     Default = PTS
 
 
+class ContextMeasure:
+    # Not sure if this is mapped correctly. Source: https://github.com/bradleyfay/NBAStats
+    FGM = 'FGM'
+    FGA = 'FGA'
+    FG_PCT = 'FG_PCT'
+    FG3M = 'FG3m'
+    FG3A = 'FG3A'
+    FG3_PCT = 'FG3_PCT'
+    PF = 'PF'
+    EFG_PCT = 'EFG_PCT'
+    TS_PCT = 'TS_PCT'
+    PTS_FB = 'PTS_FB'
+    PTS_OFF_TOV = 'PTS_OFF_TOV'
+    PTS_2ND_CHANCE = 'PTS_2ND_CHANCE'
+    Default = FGM
+
+
 class Scope:
     AllPlayers = 'S'
     Rookies = 'Rookies'
@@ -613,40 +648,58 @@ class GameScope:
     Finals = 'Finals'
     Default = Season
 
+
 class Game_Scope(_DefaultBlank):
     Last10 = 'Last 10'
     Yesterday = 'Yesterday'
+
 
 class Player_or_Team:
     Player = 'P'
     Team = 'T'
     Default = Player
 
+
 class Conference(VsConference):
     pass
+
 
 class Division(VsDivision):
     pass
 
+
 class TeamID(_DefaultZero):
     pass
+
+
+class GameID(_DefaultBlank):
+    pass
+
+
+class RookieYear(_DefaultBlank):
+    pass
+
 
 class PlayerExperience(_DefaultBlank):
     Rookie = 'Rookie'
     Sophomore = 'Sophomore'
     Veteran = 'Veteran'
 
+
 class PlayerPosition(_DefaultBlank):
     Forward = 'F'
     Center = 'C'
     Guard = 'G'
 
+
 class StarterBench(_DefaultBlank):
     Starters = 'Starters'
     Bench = 'Bench'
 
+
 class DraftYear(_DefaultBlank):
     pass
+
 
 class DraftPick(_DefaultBlank):
     FirstRound = '1st+Round'
@@ -662,11 +715,14 @@ class DraftPick(_DefaultBlank):
     Picks21Thru30 = 'Picks+21+Thru+30'
     Undrafted = 'Undrafted'
 
+
 class College(_DefaultBlank):
     pass
 
+
 class Country(_DefaultBlank):
     pass
+
 
 class Height(_DefaultBlank):
     '''
@@ -675,14 +731,17 @@ class Height(_DefaultBlank):
     for lower than 7ft3 api call should be LT+7-3
     '''
 
+
 class Weight(_DefaultBlank):
     '''
     Example:
     for greater than 225lbs api call should be GT+225lbs
     '''
 
+
 class Counter:
     Default = '1000'
+
 
 class Sorter:
     PTS = 'PTS'
@@ -703,6 +762,7 @@ class Sorter:
     TOV = 'TOV'
     REB = 'REB'
     Default = PTS
+
 
 class Direction:
     DESC = 'DESC'
