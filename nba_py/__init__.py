@@ -24,7 +24,6 @@ BASE_URL = 'http://stats.nba.com/stats/{endpoint}'
 HEADERS = {'user-agent': ('Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_5) '
                           'AppleWebKit/537.36 (KHTML, like Gecko) '
                           'Chrome/45.0.2454.101 Safari/537.36'),
-           'referer': 'http://stats.nba.com/scores/'
           }
 
 
@@ -64,7 +63,7 @@ def _api_scrape(json_inp, ndx):
         return [dict(zip(headers, value)) for value in values]
 
 
-def _get_json(endpoint, params):
+def _get_json(endpoint, params, referer='scores'):
     """
     Internal method to streamline our requests / json getting
 
@@ -78,8 +77,10 @@ def _get_json(endpoint, params):
     Returns:
         json (json): json object for selected API call
     """
+    h = dict(HEADERS)
+    h['referer'] = 'http://stats.nba.com/{ref}/'.format(ref=referer)
     _get = get(BASE_URL.format(endpoint=endpoint), params=params,
-               headers=HEADERS)
+               headers=h)
     # print _get.url
     _get.raise_for_status()
     return _get.json()
