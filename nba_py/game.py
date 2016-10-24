@@ -2,11 +2,13 @@ from nba_py import _api_scrape, _get_json
 from nba_py.constants import *
 
 
-class Boxscore:
-    _endpoint = 'boxscore'
+class BoxscoreSummary:
+    _endpoint = 'boxscoresummaryv2'
 
     def __init__(self,
                  game_id,
+                 season=CURRENT_SEASON,
+                 season_type=SeasonType.Default,
                  range_type=RangeType.Default,
                  start_period=StartPeriod.Default,
                  end_period=EndPeriod.Default,
@@ -14,6 +16,8 @@ class Boxscore:
                  end_range=EndRange.Default):
         self.json = _get_json(endpoint=self._endpoint,
                               params={'GameID': game_id,
+                                      'Season': season,
+                                      'SeasonType': season_type,
                                       'RangeType': range_type,
                                       'StartPeriod': start_period,
                                       'EndPeriod': end_period,
@@ -23,45 +27,65 @@ class Boxscore:
     def game_summary(self):
         return _api_scrape(self.json, 0)
 
-    def line_score(self):
+    def other_stats(self):
         return _api_scrape(self.json, 1)
 
-    def season_series(self):
+    def officials(self):
         return _api_scrape(self.json, 2)
 
-    def last_meeting(self):
+    def inactive_players(self):
         return _api_scrape(self.json, 3)
 
-    def player_stats(self):
+    def game_info(self):
         return _api_scrape(self.json, 4)
 
-    def team_stats(self):
+    def line_score(self):
         return _api_scrape(self.json, 5)
 
-    def other_stats(self):
+    def last_meeting(self):
         return _api_scrape(self.json, 6)
 
-    def officials(self):
+    def season_series(self):
         return _api_scrape(self.json, 7)
 
-    def game_info(self):
+    def available_video(self):
         return _api_scrape(self.json, 8)
 
-    def inactive_players(self):
-        return _api_scrape(self.json, 9)
 
-    def available_video(self):
-        return _api_scrape(self.json, 10)
+class Boxscore:
+    _endpoint = 'boxscoretraditionalv2'
 
-    def player_track(self):
-        return _api_scrape(self.json, 11)
+    def __init__(self,
+                 game_id,
+                 season=CURRENT_SEASON,
+                 season_type=SeasonType.Default,
+                 range_type=RangeType.Default,
+                 start_period=StartPeriod.Default,
+                 end_period=EndPeriod.Default,
+                 start_range=StartRange.Default,
+                 end_range=EndRange.Default):
+        self.json = _get_json(endpoint=self._endpoint,
+                              params={'GameID': game_id,
+                                      'Season': season,
+                                      'SeasonType': season_type,
+                                      'RangeType': range_type,
+                                      'StartPeriod': start_period,
+                                      'EndPeriod': end_period,
+                                      'StartRange': start_range,
+                                      'EndRange': end_range})
 
-    def player_track_team(self):
-        return _api_scrape(self.json, 12)
+    def player_stats(self):
+        return _api_scrape(self.json, 0)
+
+    def team_stats(self):
+        return _api_scrape(self.json, 1)
+
+    def team_starter_bench_stats(self):
+        return _api_scrape(self.json, 2)
 
 
 class BoxscoreScoring(Boxscore):
-    _endpoint = 'boxscorescoring'
+    _endpoint = 'boxscorescoringv2'
 
     def sql_players_scoring(self):
         return _api_scrape(self.json, 13)
@@ -71,7 +95,7 @@ class BoxscoreScoring(Boxscore):
 
 
 class BoxscoreUsage(Boxscore):
-    _endpoint = 'boxscoreusage'
+    _endpoint = 'boxscoreusagev2'
 
     def sql_players_usage(self):
         return _api_scrape(self.json, 13)
@@ -81,7 +105,7 @@ class BoxscoreUsage(Boxscore):
 
 
 class BoxscoreMisc(Boxscore):
-    _endpoint = 'boxscoremisc'
+    _endpoint = 'boxscoremiscv2'
 
     def sql_players_misc(self):
         return _api_scrape(self.json, 13)
@@ -91,7 +115,7 @@ class BoxscoreMisc(Boxscore):
 
 
 class BoxscoreAdvanced(Boxscore):
-    _endpoint = 'boxscoreadvanced'
+    _endpoint = 'boxscoreadvancedv2'
 
     def sql_players_advanced(self):
         return _api_scrape(self.json, 13)
@@ -101,7 +125,7 @@ class BoxscoreAdvanced(Boxscore):
 
 
 class BoxscoreFourFactors(Boxscore):
-    _endpoint = 'boxscorefourfactors'
+    _endpoint = 'boxscorefourfactorsv2'
 
     def sql_players_four_factors(self):
         return _api_scrape(self.json, 13)
