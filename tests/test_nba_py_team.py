@@ -7,6 +7,10 @@ def test():
     player_id = get_player('Lebron', 'James')
     assert team.TeamList()
     assert team.TeamSummary(team_id)
+    team_details = team.TeamDetails(team_id)
+    assert team_details
+    assert team_details.background()
+    assert team_details.history()
     assert team.TeamCommonRoster(team_id)
     assert team.TeamGeneralSplits(team_id)
     assert team.TeamOpponentSplits(team_id)

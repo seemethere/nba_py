@@ -35,6 +35,38 @@ class TeamSummary:
         return _api_scrape(self.json, 1)
 
 
+class TeamDetails:
+    _endpoint = 'teamdetails'
+
+    def __init__(self, team_id):
+        self.json = _get_json(endpoint=self._endpoint,
+                              params={'TeamID': team_id})
+
+    def background(self):
+        return _api_scrape(self.json, 0)
+
+    def history(self):
+        return _api_scrape(self.json, 1)
+
+    def social_sites(self):
+        return _api_scrape(self.json, 2)
+
+    def awards_championships(self):
+        return _api_scrape(self.json, 3)
+
+    def awards_conf(self):
+        return _api_scrape(self.json, 4)
+
+    def awards_div(self):
+        return _api_scrape(self.json, 5)
+
+    def hof(self):
+        return _api_scrape(self.json, 6)
+
+    def retired(self):
+        return _api_scrape(self.json, 7)
+
+
 class TeamCommonRoster:
     _endpoint = 'commonteamroster'
 
