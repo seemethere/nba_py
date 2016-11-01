@@ -45,7 +45,7 @@ class ShotChart:
                                       'OpponentTeamID' : opponent_team_id,
                                       'VsConference' : vs_conf,
                                       'VsDivision' : vs_div,
-                                      'Position' : position,
+                                      'PlayerPosition' : position,
                                       'GameSegment' : game_segment,
                                       'Period' :  period,
                                       'LastNGames' : last_n_games,
