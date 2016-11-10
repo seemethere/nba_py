@@ -7,7 +7,7 @@ class PlayerNotFoundException(Exception):
 
 
 def get_player(first_name,
-               last_name,
+               last_name = None,
                season=CURRENT_SEASON,
                only_current=0,
                just_id=True):
@@ -17,7 +17,7 @@ def get_player(first_name,
 
     Args:
         :first_name: First name of the player
-        :last_name: Last name of the player
+        :last_name: Last name of the player (this is None is the player only has first name [Nene])
         :only_current: Only wants the current list of players
         :just_id: Only wants the id of the player
 
@@ -27,7 +27,10 @@ def get_player(first_name,
     Raises:
         :PlayerNotFoundException::
     """
-    name = '{}, {}'.format(last_name, first_name).lower()
+    if last_name == None:
+        name = first_name.lower()
+    else:
+        name = '{}, {}'.format(last_name, first_name).lower()
     pl = PlayerList(season=season, only_current=only_current).info()
     hdr = 'DISPLAY_LAST_COMMA_FIRST'
     if HAS_PANDAS:
