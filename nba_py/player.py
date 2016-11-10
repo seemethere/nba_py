@@ -27,7 +27,7 @@ def get_player(first_name,
     Raises:
         :PlayerNotFoundException::
     """
-    if last_name == None:
+    if last_name is None:
         name = first_name.lower()
     else:
         name = '{}, {}'.format(last_name, first_name).lower()
