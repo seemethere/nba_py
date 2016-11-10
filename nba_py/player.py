@@ -17,7 +17,7 @@ def get_player(first_name,
 
     Args:
         :first_name: First name of the player
-        :last_name: Last name of the player (this is None is the player only has first name [Nene])
+        :last_name: Last name of the player (this is None if the player only has first name [Nene])
         :only_current: Only wants the current list of players
         :just_id: Only wants the id of the player
 
