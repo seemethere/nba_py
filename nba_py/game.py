@@ -134,6 +134,18 @@ class BoxscoreFourFactors(Boxscore):
         return _api_scrape(self.json, 14)
 
 
+class PlayerTracking:
+    _endpoint = 'boxscoreplayertrackv2'
+
+    def __init__(self,
+                 game_id):
+        self.json = _get_json(endpoint=self._endpoint,
+                              params={'GameID': game_id})
+
+    def info(self):
+        return _api_scrape(self.json, 0)
+
+
 class PlayByPlay:
     _endpoint = 'playbyplay'
 
