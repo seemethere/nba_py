@@ -51,9 +51,7 @@ class BoxscoreSummary:
     def available_video(self):
         return _api_scrape(self.json, 8)
 
-
-class Boxscore:
-    _endpoint = 'boxscoretraditionalv2'
+class _BaseBoxcore:
 
     def __init__(self,
                  game_id,
@@ -74,6 +72,10 @@ class Boxscore:
                                       'StartRange': start_range,
                                       'EndRange': end_range})
 
+
+class Boxscore(_BaseBoxcore):
+    _endpoint = 'boxscoretraditionalv2'
+
     def player_stats(self):
         return _api_scrape(self.json, 0)
 
@@ -84,54 +86,54 @@ class Boxscore:
         return _api_scrape(self.json, 2)
 
 
-class BoxscoreScoring(Boxscore):
+class BoxscoreScoring(_BaseBoxcore):
     _endpoint = 'boxscorescoringv2'
 
     def sql_players_scoring(self):
-        return _api_scrape(self.json, 13)
+        return _api_scrape(self.json, 0)
 
     def sql_team_scoring(self):
-        return _api_scrape(self.json, 14)
+        return _api_scrape(self.json, 1)
 
 
-class BoxscoreUsage(Boxscore):
+class BoxscoreUsage(_BaseBoxcore):
     _endpoint = 'boxscoreusagev2'
 
     def sql_players_usage(self):
-        return _api_scrape(self.json, 13)
+        return _api_scrape(self.json, 0)
 
     def sql_team_usage(self):
-        return _api_scrape(self.json, 14)
+        return _api_scrape(self.json, 1)
 
 
-class BoxscoreMisc(Boxscore):
+class BoxscoreMisc(_BaseBoxcore):
     _endpoint = 'boxscoremiscv2'
 
     def sql_players_misc(self):
-        return _api_scrape(self.json, 13)
+        return _api_scrape(self.json, 0)
 
     def sql_team_misc(self):
-        return _api_scrape(self.json, 14)
+        return _api_scrape(self.json, 1)
 
 
-class BoxscoreAdvanced(Boxscore):
+class BoxscoreAdvanced(_BaseBoxcore):
     _endpoint = 'boxscoreadvancedv2'
 
     def sql_players_advanced(self):
-        return _api_scrape(self.json, 13)
+        return _api_scrape(self.json, 0)
 
     def sql_team_advanced(self):
-        return _api_scrape(self.json, 14)
+        return _api_scrape(self.json, 1)
 
 
-class BoxscoreFourFactors(Boxscore):
+class BoxscoreFourFactors(_BaseBoxcore):
     _endpoint = 'boxscorefourfactorsv2'
 
     def sql_players_four_factors(self):
-        return _api_scrape(self.json, 13)
+        return _api_scrape(self.json, 0)
 
     def sql_team_four_factors(self):
-        return _api_scrape(self.json, 14)
+        return _api_scrape(self.json, 1)
 
 
 class PlayerTracking:
