@@ -1,11 +1,17 @@
 language: python
 python:
-    - "2.7"
-    - "3.5"
-
+  - '2.7'
+  - '3.5'
 install:
-    - "pip install ."
-    - "pip install pytest pytest-cov"
-
-script:
-    py.test --cov=nba_py tests/ --assert=plain
+  - pip install .
+  - pip install pytest
+script: py.test -v tests/
+deploy:
+  provider: pypi
+  user: seemethere
+  password:
+    secure: jQ/W7wd8BLKhfCFL7ec9JyqvPje6KnpnquHVPhtPMfRhXEgm1DLp5jkE1YoDdNWPwPoVUmQOs70t8XWfWMcGcMtExMhpdT3emc10z2omvQE7Vykrz7FFVKE/OtsRwhB1QiaQGTAa8btfIpZmeZw4gLe6Uf5IFJfS3Tjb50o+sSrZxDOUOTkRM+ha+BPuIPVtFQMrrfySqduBTBEwKv1g8fwZgMxfBSVrlYTmkghvhNWQjuiFzUnknzezAO0udkSSv4g87HS85U7xqaRP6VtbABc1+LbuG9ZpceAWdUxHJunjVphGWm8Qaod7el+7foRlzxmdYHGZNr9h+2ncWNpcLPg4nRDTWZ9WRaJo73rfdrV/mRlJxjwpabcShMb/CJtR2yi+NPHIRZcEJgT2+XgaBugL+yTFPEvuqlHWd82zg0Dp9ynV68dEk9UEhT7Qe3q6RR6B75c+SOd4g6nZzIFjKMEVgF9ViHLcf+fBlY9TzdL6vwLCBLUY4ReiaRIHnsDi00zxIoiL49+z0FmYe5s1fcaHf0qhnqu5PYeRVJA8mjbrEIdl53PhJEz8UEFj+QJIhFe0jkWCnT2AWwoGuMcn5H63Z0U9yQ4sXcfsH3k8SlV4768QPTJSX7jdq56ucuMug/7vKE5fZ8X50onZh+8qRAaC5fk2c/dkCrGmeQRIvuo=
+  on:
+    tags: true
+    distributions: sdist bdist_wheel
+    repo: seemethere/nba_py
