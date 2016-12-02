@@ -1,7 +1,8 @@
-from requests import get
 from datetime import datetime, timedelta
-from nba_py.constants import League
 import os
+
+from requests import get
+from nba_py.constants import League
 
 HAS_PANDAS = True
 try:
@@ -21,10 +22,11 @@ except ImportError:
 # Constants
 TODAY = datetime.today()
 BASE_URL = 'http://stats.nba.com/stats/{endpoint}'
-HEADERS = {'user-agent': ('Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_5) '
-                          'AppleWebKit/537.36 (KHTML, like Gecko) '
-                          'Chrome/45.0.2454.101 Safari/537.36'),
-          }
+HEADERS = {
+    'user-agent': ('Mozilla/5.0 (Macintosh; Intel Mac OS X 10_10_5) '
+                   'AppleWebKit/537.36 (KHTML, like Gecko) '
+                   'Chrome/45.0.2454.101 Safari/537.36'),
+}
 
 
 def _api_scrape(json_inp, ndx):

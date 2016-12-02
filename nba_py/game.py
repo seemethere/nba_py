@@ -1,5 +1,5 @@
 from nba_py import _api_scrape, _get_json
-from nba_py.constants import *
+from nba_py import constants
 
 
 class BoxscoreSummary:
@@ -7,13 +7,13 @@ class BoxscoreSummary:
 
     def __init__(self,
                  game_id,
-                 season=CURRENT_SEASON,
-                 season_type=SeasonType.Default,
-                 range_type=RangeType.Default,
-                 start_period=StartPeriod.Default,
-                 end_period=EndPeriod.Default,
-                 start_range=StartRange.Default,
-                 end_range=EndRange.Default):
+                 season=constants.CURRENT_SEASON,
+                 season_type=constants.SeasonType.Default,
+                 range_type=constants.RangeType.Default,
+                 start_period=constants.StartPeriod.Default,
+                 end_period=constants.EndPeriod.Default,
+                 start_range=constants.StartRange.Default,
+                 end_range=constants.EndRange.Default):
         self.json = _get_json(endpoint=self._endpoint,
                               params={'GameID': game_id,
                                       'Season': season,
@@ -51,17 +51,18 @@ class BoxscoreSummary:
     def available_video(self):
         return _api_scrape(self.json, 8)
 
+
 class _BaseBoxcore:
 
     def __init__(self,
                  game_id,
-                 season=CURRENT_SEASON,
-                 season_type=SeasonType.Default,
-                 range_type=RangeType.Default,
-                 start_period=StartPeriod.Default,
-                 end_period=EndPeriod.Default,
-                 start_range=StartRange.Default,
-                 end_range=EndRange.Default):
+                 season=constants.CURRENT_SEASON,
+                 season_type=constants.SeasonType.Default,
+                 range_type=constants.RangeType.Default,
+                 start_period=constants.StartPeriod.Default,
+                 end_period=constants.EndPeriod.Default,
+                 start_range=constants.StartRange.Default,
+                 end_range=constants.EndRange.Default):
         self.json = _get_json(endpoint=self._endpoint,
                               params={'GameID': game_id,
                                       'Season': season,
@@ -153,8 +154,8 @@ class PlayByPlay:
 
     def __init__(self,
                  game_id,
-                 start_period=StartPeriod.Default,
-                 end_period=EndPeriod.Default):
+                 start_period=constants.StartPeriod.Default,
+                 end_period=constants.EndPeriod.Default):
         self.json = _get_json(endpoint=self._endpoint,
                               params={'GameID': game_id,
                                       'StartPeriod': start_period,

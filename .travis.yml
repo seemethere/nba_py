@@ -4,7 +4,8 @@ python:
   - '3.5'
 install:
   - pip install .
-  - pip install pytest
+  - pip install pytest flake8
+before_script: flake8 nba_py
 script: py.test -v tests/
 deploy:
   provider: pypi

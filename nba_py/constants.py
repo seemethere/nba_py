@@ -413,8 +413,10 @@ class MeasureType:
     Usage = 'Usage'
     Default = Base
 
+
 class PtMeasureType:
     SpeedDistance = 'SpeedDistance'
+
 
 class GroupQuantity:
     Default = 5
@@ -606,7 +608,8 @@ class StatCategory:
 
 
 class ContextMeasure:
-    # Not sure if this is mapped correctly. Source: https://github.com/bradleyfay/NBAStats
+    # Not sure if this is mapped correctly. Source:
+    # https://github.com/bradleyfay/NBAStats
     FGM = 'FGM'
     FGA = 'FGA'
     FG_PCT = 'FG_PCT'
