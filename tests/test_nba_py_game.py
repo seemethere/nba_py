@@ -10,3 +10,4 @@ def test():
     assert game.BoxscoreAdvanced(gid)
     assert game.BoxscoreFourFactors(gid)
     assert game.PlayByPlay(gid)
+    assert game.HustleStats(gid)

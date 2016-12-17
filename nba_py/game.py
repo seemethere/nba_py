@@ -166,3 +166,21 @@ class PlayByPlay:
 
     def available_video(self):
         return _api_scrape(self.json, 1)
+
+
+class HustleStats:
+    _endpoint = 'hustlestatsboxscore'
+
+    def __init__(self,
+                 game_id):
+        self.json = _get_json(endpoint=self._endpoint,
+                              params={'GameID': game_id})
+
+    def hustle_stats_available(self):
+        return _api_scrape(self.json, 0)
+
+    def hustle_stats_player_box_score(self):
+        return _api_scrape(self.json, 1)
+
+    def hustle_stats_team_box_score(self):
+        return _api_scrape(self.json, 2)
