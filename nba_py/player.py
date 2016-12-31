@@ -538,7 +538,7 @@ class PlayerShootingSplits(_PlayerDashboard):
     def shot_types_detail(self):
         return _api_scrape(self.json, 6)
 
-    def assissted_by(self):
+    def assisted_by(self):
         return _api_scrape(self.json, 7)
 
 
@@ -881,7 +881,7 @@ class PlayerPassTracking(_PlayerDashboard):
     def passes_made(self):
         return _api_scrape(self.json, 0)
 
-    def passes_recieved(self):
+    def passes_received(self):
         return _api_scrape(self.json, 1)
 
 
