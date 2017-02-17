@@ -107,6 +107,76 @@ class Lineups:
         return _api_scrape(self.json, 0)
 
 
+class TeamStats:
+    _endpoint = 'leaguedashteamstats'
+
+    def __init__(self,
+                 conference=constants.Conference.Default,
+                 date_from=constants.DateFrom.Default,
+                 date_to=constants.DateTo.Default,
+                 division=constants.Division.Default,
+                 game_scope=constants.Game_Scope.Default,
+                 game_segment=constants.GameSegment.Default,
+                 last_n_games=constants.LastNGames.Default,
+                 league_id=constants.League.Default,
+                 location=constants.Location.Default,
+                 measure_type=constants.MeasureType.Default,
+                 month=constants.Month.Default,
+                 opponent_team_id=constants.OpponentTeamID.Default,
+                 outcome=constants.Outcome.Default,
+                 playoff_round=constants.PlayoffRound.Default,
+                 pace_adjust=constants.PaceAdjust.Default,
+                 per_mode=constants.PerMode.Default,
+                 period=constants.Period.Default,
+                 player_experience=constants.PlayerExperience.Default,
+                 player_position=constants.PlayerPosition.Default,
+                 plus_minus=constants.PlusMinus.Default,
+                 rank=constants.Rank.Default,
+                 season=constants.CURRENT_SEASON,
+                 season_segment=constants.SeasonSegment.Default,
+                 season_type=constants.SeasonType.Default,
+                 shot_clock_range=constants.ShotClockRange.Default,
+                 starter_bench=constants.StarterBench.Default,
+                 team_id=constants.TeamID.Default,
+                 vs_conference=constants.VsConference.Default,
+                 vs_division=constants.VsDivision.Default
+                 ):
+        self.json = _get_json(endpoint=self._endpoint,
+                              params={'LeagueID': league_id,
+                                      'SeasonType': season_type,
+                                      'MeasureType': measure_type,
+                                      'PerMode': per_mode,
+                                      'PlusMinus': plus_minus,
+                                      'PaceAdjust': pace_adjust,
+                                      'Rank': rank,
+                                      'Season': season,
+                                      'PORound': playoff_round,
+                                      'Outcome': outcome,
+                                      'Location': location,
+                                      'Month': month,
+                                      'SeasonSegment': season_segment,
+                                      'DateFrom': date_from,
+                                      'DateTo': date_to,
+                                      'OpponentTeamID': opponent_team_id,
+                                      'VsConference': vs_conference,
+                                      'VsDivision': vs_division,
+                                      'TeamID': team_id,
+                                      'Conference': conference,
+                                      'Division': division,
+                                      'GameSegment': game_segment,
+                                      'Period': period,
+                                      'ShotClockRange': shot_clock_range,
+                                      'LastNGames': last_n_games,
+                                      'GameScope': game_scope,
+                                      'PlayerExperience': player_experience,
+                                      'PlayerPosition': player_position,
+                                      'StarterBench': starter_bench,
+                                      })
+
+    def overall(self):
+        return _api_scrape(self.json, 0)
+
+
 class PlayerStats:
     _endpoint = 'leaguedashplayerstats'
 
