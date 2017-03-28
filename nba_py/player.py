@@ -131,7 +131,7 @@ class _PlayerDashboard:
     Attributes:
         :json: Contains the full json dump to play around with
     """
-    _endpoint = ''
+    _endpoint = 'playerdashboardbyyearoveryear'
 
     def __init__(self,
                  player_id,
@@ -538,7 +538,7 @@ class PlayerShootingSplits(_PlayerDashboard):
     def shot_types_detail(self):
         return _api_scrape(self.json, 6)
 
-    def assissted_by(self):
+    def assisted_by(self):
         return _api_scrape(self.json, 7)
 
 
@@ -677,11 +677,17 @@ class PlayerCareer:
     def college_season_career_totals(self):
         return _api_scrape(self.json, 7)
 
-    def regular_season_rankings(self):
+    def preseason_season_totals(self):
         return _api_scrape(self.json, 8)
 
-    def post_season_rankings(self):
+    def preseason_career_totals(self):
         return _api_scrape(self.json, 9)
+
+    def regular_season_rankings(self):
+        return _api_scrape(self.json, 10)
+
+    def post_season_rankings(self):
+        return _api_scrape(self.json, 11)
 
 
 class PlayerProfile(PlayerCareer):
@@ -700,13 +706,13 @@ class PlayerProfile(PlayerCareer):
     _endpoint = 'playerprofilev2'
 
     def season_highs(self):
-        return _api_scrape(self.json, 10)
+        return _api_scrape(self.json, 12)
 
     def career_highs(self):
-        return _api_scrape(self.json, 11)
+        return _api_scrape(self.json, 13)
 
     def next_game(self):
-        return _api_scrape(self.json, 12)
+        return _api_scrape(self.json, 14)
 
 
 class PlayerGameLogs:
@@ -881,7 +887,7 @@ class PlayerPassTracking(_PlayerDashboard):
     def passes_made(self):
         return _api_scrape(self.json, 0)
 
-    def passes_recieved(self):
+    def passes_received(self):
         return _api_scrape(self.json, 1)
 
 

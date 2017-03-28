@@ -292,7 +292,7 @@ class TeamShootingSplits(_TeamDashboard):
     def shot_type_summary(self):
         return _api_scrape(self.json, 5)
 
-    def assissted_by(self):
+    def assisted_by(self):
         return _api_scrape(self.json, 6)
 
 
