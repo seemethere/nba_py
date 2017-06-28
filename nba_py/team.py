@@ -169,7 +169,7 @@ class TeamOpponentSplits(_TeamDashboard):
         return _api_scrape(self.json, 2)
 
     def by_opponent(self):
-        return _api_scrape(self.json, 2)
+        return _api_scrape(self.json, 3)
 
 
 class TeamLastNGamesSplits(_TeamDashboard):
